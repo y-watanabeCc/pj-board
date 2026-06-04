@@ -1,0 +1,39 @@
+{
+  "title": "Project Dashboard",
+  "updated_at": "2026-06-03T23:53:20Z",
+  "summary": {
+    "total": 2,
+    "active": 2,
+    "waiting": 0,
+    "done": 0,
+    "error": 0,
+    "commits_today": 0,
+    "commits_add": 0,
+    "commits_del": 0,
+    "tasks_done_today": 0,
+    "alerts": 0
+  },
+  "projects": [
+    {
+      "id": "yahoo-media",
+      "name": "Yahoo Media PJ",
+      "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
+      "status": "active",
+      "progress": 50,
+      "latest_log": "記事制作フロー運用中。ライター担当による執筆・レビューサイクルを回している。",
+      "updated_at": "2026-06-04T00:00:00Z",
+      "todos": 0
+    },
+    {
+      "id": "backoffice",
+      "name": "バックオフィス",
+      "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
+      "status": "active",
+      "progress": 0,
+      "latest_log": "本店移転登記対応中（登記完了待ち）。スタッフ健診フロー・経理対応も並行中。",
+      "updated_at": "2026-06-04T00:00:00Z",
+      "todos": 0
+    }
+  ],
+  "alerts": []
+}

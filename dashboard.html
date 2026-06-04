@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code — Project Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0f11;
+    --bg2: #16181c;
+    --bg3: #1e2127;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --text2: #8b909e;
+    --text3: #55596a;
+    --green: #3dd68c;
+    --green-bg: rgba(61,214,140,0.1);
+    --amber: #f5a623;
+    --amber-bg: rgba(245,166,35,0.1);
+    --red: #f05c5c;
+    --red-bg: rgba(240,92,92,0.1);
+    --blue: #5b9cf6;
+    --blue-bg: rgba(91,156,246,0.1);
+    --mono: 'DM Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  html { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 14px; line-height: 1.6; }
+
+  body { min-height: 100vh; padding: 2rem 1.5rem; max-width: 960px; margin: 0 auto; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); }
+  .header-title { font-size: 11px; font-family: var(--mono); color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .header-name { font-size: 22px; font-weight: 600; color: var(--text); }
+  .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .live-badge { display: flex; align-items: center; gap: 6px; font-size: 11px; font-family: var(--mono); color: var(--green); }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .last-update { font-size: 11px; font-family: var(--mono); color: var(--text3); }
+
+  /* Controls */
+  .controls { display: flex; align-items: center; gap: 14px; }
+  .ctrl-btn { display: flex; align-items: center; gap: 6px; background: var(--bg3); color: var(--text); border: 0.5px solid var(--border2); border-radius: 8px; padding: 7px 14px; font-family: var(--mono); font-size: 11px; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+  .ctrl-btn:hover { background: #262a31; border-color: rgba(255,255,255,0.22); }
+  .ctrl-btn:active { transform: scale(0.97); }
+  .ctrl-btn.loading .refresh-icon { animation: spin 0.6s linear infinite; }
+  .refresh-icon { display: inline-block; font-size: 13px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .toggle-wrap { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+  .toggle-label { font-size: 11px; font-family: var(--mono); color: var(--text2); }
+  .toggle { position: relative; display: inline-flex; }
+  .toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .toggle-track { width: 36px; height: 20px; background: var(--bg3); border: 0.5px solid var(--border2); border-radius: 20px; transition: background 0.2s; display: flex; align-items: center; padding: 0 2px; }
+  .toggle-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--text3); transition: transform 0.2s, background 0.2s; }
+  .toggle input:checked + .toggle-track { background: var(--green-bg); border-color: var(--green); }
+  .toggle input:checked + .toggle-track .toggle-thumb { transform: translateX(16px); background: var(--green); }
+
+  /* Metrics */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 2rem; }
+  .metric { background: var(--bg2); border: 0.5px solid var(--border); border-radius: 10px; padding: 16px; }
+  .metric-label { font-size: 10px; font-family: var(--mono); color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .metric-val { font-size: 28px; font-weight: 600; line-height: 1; margin-bottom: 4px; }
+  .metric-sub { font-size: 11px; font-family: var(--mono); color: var(--text3); }
+  .metric.alert .metric-val { color: var(--red); }
+  .metric.ok .metric-val { color: var(--green); }
+
+  /* Section label */
+  .section-label { font-size: 10px; font-family: var(--mono); color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+
+  /* Project cards */
+  .pj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 2rem; }
+
+  .pj-card { background: var(--bg2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.1rem 1.25rem; position: relative; overflow: hidden; transition: border-color 0.2s; }
+  .pj-card:hover { border-color: var(--border2); }
+  .pj-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; border-radius: 12px 0 0 12px; }
+  .pj-card.active::before { background: var(--green); }
+  .pj-card.waiting::before { background: var(--amber); }
+  .pj-card.done::before { background: var(--blue); }
+  .pj-card.error::before { background: var(--red); }
+
+  .pj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .pj-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+  .pj-dir { font-size: 10px; font-family: var(--mono); color: var(--text3); }
+
+  .pill { font-size: 10px; font-family: var(--mono); padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
+  .pill.active { background: var(--green-bg); color: var(--green); }
+  .pill.waiting { background: var(--amber-bg); color: var(--amber); }
+  .pill.done { background: var(--blue-bg); color: var(--blue); }
+  .pill.error { background: var(--red-bg); color: var(--red); }
+
+  .progress { height: 3px; background: var(--bg3); border-radius: 3px; margin-bottom: 10px; }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+  .active .progress-fill { background: var(--green); }
+  .waiting .progress-fill { background: var(--amber); }
+  .done .progress-fill { background: var(--blue); }
+  .error .progress-fill { background: var(--red); }
+
+  .pj-log { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pj-log.error-log { color: var(--red); }
+
+  .pj-meta { display: flex; gap: 14px; }
+  .meta { font-size: 10px; font-family: var(--mono); color: var(--text3); }
+  .meta.warn { color: var(--red); }
+
+  /* Alerts */
+  .alerts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .alert-item { background: var(--bg2); border: 0.5px solid var(--border); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; }
+  .alert-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .alert-dot.red { background: var(--red); }
+  .alert-dot.amber { background: var(--amber); }
+  .alert-pj { font-size: 10px; font-family: var(--mono); color: var(--text3); min-width: 110px; }
+  .alert-msg { font-size: 12px; color: var(--text2); flex: 1; }
+  .alert-time { font-size: 10px; font-family: var(--mono); color: var(--text3); }
+
+  /* Footer */
+  .footer { border-top: 0.5px solid var(--border); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-size: 10px; font-family: var(--mono); color: var(--text3); }
+  .footer-right { font-size: 10px; font-family: var(--mono); color: var(--text3); }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .pj-grid { grid-template-columns: 1fr; }
+    .header { flex-direction: column; gap: 12px; }
+    .header-right { align-items: flex-start; }
+  }
+
+  /* Fade in */
+  .pj-card { animation: fadeUp 0.3s ease both; }
+  .pj-card:nth-child(1) { animation-delay: 0.05s; }
+  .pj-card:nth-child(2) { animation-delay: 0.1s; }
+  .pj-card:nth-child(3) { animation-delay: 0.15s; }
+  .pj-card:nth-child(4) { animation-delay: 0.2s; }
+  .pj-card:nth-child(5) { animation-delay: 0.25s; }
+  .pj-card:nth-child(6) { animation-delay: 0.3s; }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+
+  #error-banner { display: none; background: var(--red-bg); border: 0.5px solid var(--red); color: var(--red); font-family: var(--mono); font-size: 11px; padding: 8px 14px; border-radius: 8px; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+
+<div id="error-banner">⚠ status.json を読み込めませんでした。ダミーデータを表示しています。</div>
+
+<div class="header">
+  <div>
+    <div class="header-title">Claude Code</div>
+    <div class="header-name" id="dash-title">Project Dashboard</div>
+  </div>
+  <div class="header-right">
+    <div class="controls">
+      <button id="refresh-btn" class="ctrl-btn"><span class="refresh-icon">⟳</span> PJ進捗更新</button>
+      <label class="toggle-wrap">
+        <span class="toggle-label">自動更新</span>
+        <span class="toggle">
+          <input type="checkbox" id="auto-toggle">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </span>
+      </label>
+    </div>
+    <div class="last-update" id="last-update">—</div>
+  </div>
+</div>
+
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-label">Total Projects</div>
+    <div class="metric-val" id="m-total">—</div>
+    <div class="metric-sub" id="m-total-sub">—</div>
+  </div>
+  <div class="metric ok">
+    <div class="metric-label">Active Agents</div>
+    <div class="metric-val" id="m-active">—</div>
+    <div class="metric-sub" id="m-active-sub">—</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Today's Commits</div>
+    <div class="metric-val" id="m-commits">—</div>
+    <div class="metric-sub" id="m-commits-sub">—</div>
+  </div>
+  <div class="metric alert">
+    <div class="metric-label">要確認</div>
+    <div class="metric-val" id="m-alerts">—</div>
+    <div class="metric-sub" id="m-alerts-sub">—</div>
+  </div>
+</div>
+
+<div class="section-label">Projects</div>
+<div class="pj-grid" id="pj-grid"></div>
+
+<div class="section-label" id="alert-label" style="display:none">要確認 / アクション必要</div>
+<div class="alerts" id="alerts"></div>
+
+<div class="footer">
+  <div class="footer-left" id="footer-path">data: status.json</div>
+  <div class="footer-right" id="footer-mode">手動更新モード</div>
+</div>
+
+<script>
+const DUMMY = {
+  title: "Project Dashboard",
+  updated_at: new Date().toISOString(),
+  summary: {
+    total: 6,
+    active: 3,
+    waiting: 1,
+    done: 1,
+    error: 1,
+    commits_today: 27,
+    commits_add: 841,
+    commits_del: 203,
+    tasks_done_today: 14,
+    alerts: 2
+  },
+  projects: [
+    { id: "ec-renewal", name: "ECサイトリニューアル", dir: "/projects/ec-renewal", status: "active", progress: 68, latest_log: "カート機能のユニットテスト追加中。決済APIのモック実装完了。", updated_at: "2024-06-04T14:29:00Z", todos: 5 },
+    { id: "internal-dash", name: "社内ダッシュボード", dir: "/projects/internal-dash", status: "active", progress: 42, latest_log: "グラフコンポーネントのレスポンシブ対応。Rechartsでの折れ線グラフ実装中。", updated_at: "2024-06-04T14:20:00Z", todos: 8 },
+    { id: "api-v2", name: "API v2 設計", dir: "/projects/api-v2", status: "waiting", progress: 85, latest_log: "OpenAPI仕様書のドラフト完成。レビュー待ち状態で停止中。", updated_at: "2024-06-04T13:32:00Z", todos: 2 },
+    { id: "data-migration", name: "データ移行スクリプト", dir: "/projects/data-migration", status: "error", progress: 55, latest_log: "DB接続タイムアウト。環境変数 DB_HOST の設定を確認してください。", updated_at: "2024-06-04T13:47:00Z", todos: 0 },
+    { id: "auth-module", name: "認証モジュール", dir: "/projects/auth-module", status: "done", progress: 100, latest_log: "JWT実装・テスト・ドキュメント整備まで全タスク完了。", updated_at: "2024-06-03T18:00:00Z", todos: 0 },
+    { id: "notification", name: "通知システム", dir: "/projects/notification", status: "active", progress: 25, latest_log: "Webhookのスキーマ設計開始。まだ初期段階。", updated_at: "2024-06-04T12:32:00Z", todos: 12 }
+  ],
+  alerts: [
+    { type: "error", project_id: "data-migration", message: "DB接続エラー — 環境変数 DB_HOST を確認", time: "2024-06-04T13:47:00Z" },
+    { type: "waiting", project_id: "api-v2", message: "OpenAPI仕様書のレビューをお願いします", time: "2024-06-04T13:32:00Z" }
+  ]
+};
+
+const STATUS_MAP = { active: "作業中", waiting: "承認待ち", done: "完了", error: "エラー" };
+
+function timeAgo(iso) {
+  const diff = (Date.now() - new Date(iso)) / 1000;
+  if (diff < 60) return "今";
+  if (diff < 3600) return Math.floor(diff / 60) + "分前";
+  if (diff < 86400) return Math.floor(diff / 3600) + "時間前";
+  return Math.floor(diff / 86400) + "日前";
+}
+
+function render(data) {
+  const s = data.summary;
+
+  document.getElementById("dash-title").textContent = data.title || "Project Dashboard";
+  document.getElementById("last-update").textContent = "更新: " + new Date(data.updated_at).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+
+  document.getElementById("m-total").textContent = s.total;
+  document.getElementById("m-total-sub").textContent = `作業中 ${s.active} / 完了 ${s.done} / エラー ${s.error}`;
+  document.getElementById("m-active").textContent = s.active;
+  document.getElementById("m-active-sub").textContent = `今日のタスク完了: ${s.tasks_done_today}件`;
+  document.getElementById("m-commits").textContent = s.commits_today;
+  document.getElementById("m-commits-sub").textContent = `+${s.commits_add} / -${s.commits_del}`;
+  document.getElementById("m-alerts").textContent = s.alerts;
+  document.getElementById("m-alerts-sub").textContent = "エラー / 承認待ち";
+
+  const grid = document.getElementById("pj-grid");
+  grid.innerHTML = data.projects.map(p => `
+    <div class="pj-card ${p.status}">
+      <div class="pj-top">
+        <div>
+          <div class="pj-name">${p.name}</div>
+          <div class="pj-dir">${p.dir}</div>
+        </div>
+        <span class="pill ${p.status}">${STATUS_MAP[p.status] || p.status}</span>
+      </div>
+      <div class="progress"><div class="progress-fill" style="width:${p.progress}%"></div></div>
+      <div class="pj-log ${p.status === 'error' ? 'error-log' : ''}">${p.latest_log}</div>
+      <div class="pj-meta">
+        <span class="meta">${p.progress}%</span>
+        <span class="meta">${timeAgo(p.updated_at)}</span>
+        ${p.todos > 0 ? `<span class="meta">TODO ${p.todos}件</span>` : ''}
+        ${p.status === 'error' ? `<span class="meta warn">要対応</span>` : ''}
+      </div>
+    </div>
+  `).join("");
+
+  const alertsEl = document.getElementById("alerts");
+  const alertLabel = document.getElementById("alert-label");
+  if (data.alerts && data.alerts.length > 0) {
+    alertLabel.style.display = "block";
+    alertsEl.innerHTML = data.alerts.map(a => `
+      <div class="alert-item">
+        <div class="alert-dot ${a.type === 'error' ? 'red' : 'amber'}"></div>
+        <span class="alert-pj">${a.project_id}</span>
+        <span class="alert-msg">${a.message}</span>
+        <span class="alert-time">${timeAgo(a.time)}</span>
+      </div>
+    `).join("");
+  } else {
+    alertLabel.style.display = "none";
+    alertsEl.innerHTML = "";
+  }
+}
+
+async function load(isManual) {
+  const btn = document.getElementById("refresh-btn");
+  if (isManual) btn.classList.add("loading");
+  try {
+    const res = await fetch("status.json?t=" + Date.now());
+    if (!res.ok) throw new Error("not found");
+    const data = await res.json();
+    document.getElementById("error-banner").style.display = "none";
+    render(data);
+  } catch {
+    document.getElementById("error-banner").style.display = "block";
+    render(DUMMY);
+  }
+  if (isManual) setTimeout(() => btn.classList.remove("loading"), 400);
+}
+
+const AUTO_INTERVAL = 30000;
+let autoTimer = null;
+
+const autoToggle = document.getElementById("auto-toggle");
+const footerMode = document.getElementById("footer-mode");
+
+function setAuto(on) {
+  if (on) {
+    if (!autoTimer) autoTimer = setInterval(() => load(false), AUTO_INTERVAL);
+    footerMode.textContent = "自動更新中（30秒ごと）";
+    footerMode.style.color = "var(--green)";
+    load(false);
+  } else {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    footerMode.textContent = "手動更新モード";
+    footerMode.style.color = "";
+  }
+}
+
+document.getElementById("refresh-btn").addEventListener("click", () => load(true));
+autoToggle.addEventListener("change", (e) => setAuto(e.target.checked));
+
+load(false);
+</script>
+</body>
+</html>
