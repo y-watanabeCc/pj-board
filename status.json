@@ -1,16 +1,16 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-04T07:34:18Z",
+  "updated_at": "2026-06-04T09:20:12Z",
   "summary": {
     "total": 2,
     "active": 2,
     "waiting": 0,
     "done": 0,
     "error": 0,
-    "commits_today": 0,
-    "commits_add": 0,
-    "commits_del": 0,
-    "tasks_done_today": 5,
+    "commits_today": 1,
+    "commits_add": 2586,
+    "commits_del": 5,
+    "tasks_done_today": 7,
     "alerts": 0
   },
   "projects": [
@@ -19,9 +19,9 @@
       "name": "Yahoo Media PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
       "status": "active",
-      "progress": 75,
-      "latest_log": "C-5レポート起点の施策対応中。sales-growth-guide・super-paypay-matsuri-guideのリライト完了・Notion更新済み。banner-creation-guide・product-listing-tipsはNotion手動修正待ち。gratitude-day役割分担リライト起票済み・Gemini依頼待ち。",
-      "updated_at": "2026-06-04T10:00:00Z",
+      "progress": 85,
+      "latest_log": "gratitude-day 2記事の役割分担リライト完了。banner-guide（バナー制作特化）・strategy（感謝デー戦略全般）に役割分離・Notion本文上書き・Description更新済み。残課題：banner-creation-guide・product-listing-tipsのNotion手動修正。",
+      "updated_at": "2026-06-04T10:30:00Z",
       "todos": 0,
       "tasks": [
         {
@@ -37,15 +37,19 @@
           "done": true
         },
         {
+          "label": "gratitude-day-banner-guide 役割分担リライト",
+          "done": true
+        },
+        {
+          "label": "gratitude-day-strategy 役割分担リライト",
+          "done": true
+        },
+        {
           "label": "banner-creation-guide Notion手動修正",
           "done": false
         },
         {
           "label": "product-listing-tips Notion手動修正",
-          "done": false
-        },
-        {
-          "label": "gratitude-day 役割分担リライト（Gemini依頼待ち）",
           "done": false
         }
       ]
