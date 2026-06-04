@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-04T05:45:32Z",
+  "updated_at": "2026-06-04T07:34:18Z",
   "summary": {
     "total": 2,
     "active": 2,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 3,
+    "tasks_done_today": 5,
     "alerts": 0
   },
   "projects": [
@@ -19,10 +19,36 @@
       "name": "Yahoo Media PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
       "status": "active",
-      "progress": 65,
-      "latest_log": "C-5レポート起点の施策対応中。sales-growth-guideリライト完了・Notion更新済み。super-paypay-matsuri-guideはC-4校閲中。banner-creation-guide・product-listing-tipsはNotion手動修正待ち。gratitude-day役割分担リライト起票済み。",
+      "progress": 75,
+      "latest_log": "C-5レポート起点の施策対応中。sales-growth-guide・super-paypay-matsuri-guideのリライト完了・Notion更新済み。banner-creation-guide・product-listing-tipsはNotion手動修正待ち。gratitude-day役割分担リライト起票済み・Gemini依頼待ち。",
       "updated_at": "2026-06-04T10:00:00Z",
-      "todos": 0
+      "todos": 0,
+      "tasks": [
+        {
+          "label": "sales-growth-guide リライト",
+          "done": true
+        },
+        {
+          "label": "super-paypay-matsuri-guide リライト",
+          "done": true
+        },
+        {
+          "label": "Notion更新（上記2記事）",
+          "done": true
+        },
+        {
+          "label": "banner-creation-guide Notion手動修正",
+          "done": false
+        },
+        {
+          "label": "product-listing-tips Notion手動修正",
+          "done": false
+        },
+        {
+          "label": "gratitude-day 役割分担リライト（Gemini依頼待ち）",
+          "done": false
+        }
+      ]
     },
     {
       "id": "backoffice",
@@ -32,7 +58,8 @@
       "progress": 0,
       "latest_log": "本店移転登記対応中（登記完了待ち）。スタッフ健診フロー・経理対応も並行中。",
       "updated_at": "2026-06-04T00:00:00Z",
-      "todos": 0
+      "todos": 0,
+      "tasks": []
     }
   ],
   "alerts": []

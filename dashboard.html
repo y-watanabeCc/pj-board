@@ -143,6 +143,28 @@
   @keyframes fadeUp { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
 
   #error-banner { display: none; background: var(--red-bg); border: 0.5px solid var(--red); color: var(--red); font-family: var(--mono); font-size: 11px; padding: 8px 14px; border-radius: 8px; margin-bottom: 1rem; }
+
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; z-index: 100; animation: mFadeIn 0.15s ease; }
+  @keyframes mFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal-box { background: var(--bg2); border: 0.5px solid var(--border2); border-radius: 16px; padding: 1.75rem; width: 90%; max-width: 540px; max-height: 82vh; overflow-y: auto; animation: mSlideUp 0.2s ease; }
+  @keyframes mSlideUp { from { transform: translateY(14px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.1rem; }
+  .modal-pj-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .modal-pj-dir { font-size: 10px; font-family: var(--mono); color: var(--text3); word-break: break-all; }
+  .modal-close { background: none; border: none; color: var(--text3); font-size: 16px; cursor: pointer; padding: 2px 6px; border-radius: 6px; transition: color 0.15s; flex-shrink: 0; }
+  .modal-close:hover { color: var(--text); }
+  .modal-progress-pct { font-size: 11px; font-family: var(--mono); color: var(--text3); text-align: right; margin-bottom: 5px; }
+  .modal-section-label { font-size: 10px; font-family: var(--mono); color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin: 1.25rem 0 10px; }
+  .task-list { display: flex; flex-direction: column; gap: 8px; }
+  .task-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text2); }
+  .task-item.done { color: var(--text3); }
+  .task-label.done-label { text-decoration: line-through; }
+  .task-check { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--border2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+  .task-item.done .task-check { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+  .modal-log-box { font-size: 12px; color: var(--text2); line-height: 1.7; background: var(--bg3); border-radius: 8px; padding: 12px 14px; }
+  .modal-footer { display: flex; justify-content: space-between; margin-top: 1.25rem; padding-top: 1rem; border-top: 0.5px solid var(--border); font-size: 10px; font-family: var(--mono); color: var(--text3); }
+  .pj-card { cursor: pointer; }
 </style>
 </head>
 <body>
@@ -198,6 +220,36 @@
 <div class="section-label" id="alert-label" style="display:none">要確認 / アクション必要</div>
 <div class="alerts" id="alerts"></div>
 
+<!-- 詳細モーダル -->
+<div id="modal-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-header">
+      <div style="flex:1;min-width:0;margin-right:12px;">
+        <div class="modal-pj-name" id="modal-name"></div>
+        <div class="modal-pj-dir" id="modal-dir"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+        <span class="pill" id="modal-pill"></span>
+        <button class="modal-close" id="modal-close" aria-label="閉じる">✕</button>
+      </div>
+    </div>
+    <div>
+      <div class="modal-progress-pct" id="modal-pct"></div>
+      <div class="progress"><div class="progress-fill" id="modal-progress-fill" style="width:0%"></div></div>
+    </div>
+    <div id="modal-tasks-section">
+      <div class="modal-section-label">タスク</div>
+      <div class="task-list" id="modal-task-list"></div>
+    </div>
+    <div class="modal-section-label">最新ログ</div>
+    <div class="modal-log-box" id="modal-log"></div>
+    <div class="modal-footer">
+      <span id="modal-updated"></span>
+      <span id="modal-todos-label"></span>
+    </div>
+  </div>
+</div>
+
 <div class="footer">
   <div class="footer-left" id="footer-path">data: status.json</div>
   <div class="footer-right" id="footer-mode">手動更新モード</div>
@@ -234,6 +286,8 @@ const DUMMY = {
 };
 
 const STATUS_MAP = { active: "作業中", waiting: "承認待ち", done: "完了", error: "エラー" };
+const STATUS_COLORS = { active: "var(--green)", waiting: "var(--amber)", done: "var(--blue)", error: "var(--red)" };
+let projectsData = [];
 
 function timeAgo(iso) {
   const diff = (Date.now() - new Date(iso)) / 1000;
@@ -258,9 +312,10 @@ function render(data) {
   document.getElementById("m-alerts").textContent = s.alerts;
   document.getElementById("m-alerts-sub").textContent = "エラー / 承認待ち";
 
+  projectsData = data.projects;
   const grid = document.getElementById("pj-grid");
-  grid.innerHTML = data.projects.map(p => `
-    <div class="pj-card ${p.status}">
+  grid.innerHTML = data.projects.map((p, i) => `
+    <div class="pj-card ${p.status}" data-pj-index="${i}">
       <div class="pj-top">
         <div>
           <div class="pj-name">${p.name}</div>
@@ -334,6 +389,81 @@ function setAuto(on) {
 
 document.getElementById("refresh-btn").addEventListener("click", () => load(true));
 autoToggle.addEventListener("change", (e) => setAuto(e.target.checked));
+
+// ── モーダル ──────────────────────────────────
+function openModal(p) {
+  const overlay = document.getElementById("modal-overlay");
+
+  // テキストは必ず textContent で設定（XSS防止）
+  document.getElementById("modal-name").textContent = p.name;
+  document.getElementById("modal-dir").textContent = p.dir;
+  document.getElementById("modal-pct").textContent = p.progress + "%";
+  document.getElementById("modal-log").textContent = p.latest_log;
+
+  const pill = document.getElementById("modal-pill");
+  pill.className = "pill " + p.status;
+  pill.textContent = STATUS_MAP[p.status] || p.status;
+
+  const fill = document.getElementById("modal-progress-fill");
+  fill.style.width = p.progress + "%";
+  fill.style.background = STATUS_COLORS[p.status] || STATUS_COLORS.active;
+
+  // タスクリスト（DOM生成で安全に）
+  const taskSection = document.getElementById("modal-tasks-section");
+  const taskList = document.getElementById("modal-task-list");
+  taskList.innerHTML = "";
+  if (p.tasks && p.tasks.length > 0) {
+    taskSection.style.display = "block";
+    p.tasks.forEach(t => {
+      const item = document.createElement("div");
+      item.className = "task-item" + (t.done ? " done" : "");
+
+      const check = document.createElement("div");
+      check.className = "task-check";
+      check.textContent = t.done ? "✓" : "";
+
+      const label = document.createElement("span");
+      label.className = "task-label" + (t.done ? " done-label" : "");
+      label.textContent = t.label;
+
+      item.appendChild(check);
+      item.appendChild(label);
+      taskList.appendChild(item);
+    });
+  } else {
+    taskSection.style.display = "none";
+  }
+
+  const updatedEl = document.getElementById("modal-updated");
+  updatedEl.textContent = "更新: " + new Date(p.updated_at).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+
+  const todosEl = document.getElementById("modal-todos-label");
+  todosEl.textContent = p.todos > 0 ? "TODO " + p.todos + "件" : "";
+
+  overlay.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("modal-overlay").style.display = "none";
+  document.body.style.overflow = "";
+}
+
+// カードクリックでモーダルを開く（イベント委譲）
+document.getElementById("pj-grid").addEventListener("click", e => {
+  const card = e.target.closest(".pj-card");
+  if (card) {
+    const idx = parseInt(card.dataset.pjIndex, 10);
+    if (projectsData[idx]) openModal(projectsData[idx]);
+  }
+});
+
+// モーダルを閉じる
+document.getElementById("modal-close").addEventListener("click", closeModal);
+document.getElementById("modal-overlay").addEventListener("click", e => {
+  if (e.target === document.getElementById("modal-overlay")) closeModal();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
 load(false);
 </script>
