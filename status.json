@@ -1,17 +1,17 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-04T09:45:26Z",
+  "updated_at": "2026-06-04T09:57:34Z",
   "summary": {
-    "total": 2,
+    "total": 3,
     "active": 2,
-    "waiting": 0,
+    "waiting": 1,
     "done": 0,
     "error": 0,
     "commits_today": 1,
     "commits_add": 2586,
     "commits_del": 5,
     "tasks_done_today": 7,
-    "alerts": 0
+    "alerts": 1
   },
   "projects": [
     {
@@ -64,7 +64,62 @@
       "updated_at": "2026-06-04T00:00:00Z",
       "todos": 0,
       "tasks": []
+    },
+    {
+      "id": "honten-iten",
+      "name": "本店移転PJ",
+      "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/honten_iten",
+      "status": "waiting",
+      "progress": 30,
+      "latest_log": "登記申請書を6/2に簡易書留で郵送済み。登記完了待ち（6/10〜14頃 NTAサイトで確認予定）。",
+      "updated_at": "2026-06-04T00:00:00Z",
+      "todos": 6,
+      "tasks": [
+        {
+          "label": "書類5点作成（株主総会議事録・取締役決定書・登記申請書など）",
+          "done": true
+        },
+        {
+          "label": "登記申請 簡易書留で郵送完了（6/2）",
+          "done": true
+        },
+        {
+          "label": "郵便転送届（e転居）完了（6/3）",
+          "done": true
+        },
+        {
+          "label": "NTAサイトで登記完了確認（6/10〜14頃）",
+          "done": false
+        },
+        {
+          "label": "謄本取得・印鑑カード交付申請（法務局）",
+          "done": false
+        },
+        {
+          "label": "社会保険 所在地変更届（年金事務所）",
+          "done": false
+        },
+        {
+          "label": "税理士（inoue_munehiro）へ完了報告・税務届出依頼",
+          "done": false
+        },
+        {
+          "label": "労働保険変更届（監督署）→ 雇用保険変更届（ハローワーク）",
+          "done": false
+        },
+        {
+          "label": "フェーズ4：MF・銀行・取引先・名刺など",
+          "done": false
+        }
+      ]
     }
   ],
-  "alerts": []
+  "alerts": [
+    {
+      "type": "waiting",
+      "project_id": "honten-iten",
+      "message": "登記完了待ち（6/10〜14頃 NTAサイト確認予定）",
+      "time": "2026-06-04T00:00:00Z"
+    }
+  ]
 }
