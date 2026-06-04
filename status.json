@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-03T23:53:20Z",
+  "updated_at": "2026-06-04T05:45:32Z",
   "summary": {
     "total": 2,
     "active": 2,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 0,
+    "tasks_done_today": 3,
     "alerts": 0
   },
   "projects": [
@@ -19,9 +19,9 @@
       "name": "Yahoo Media PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
       "status": "active",
-      "progress": 50,
-      "latest_log": "記事制作フロー運用中。ライター担当による執筆・レビューサイクルを回している。",
-      "updated_at": "2026-06-04T00:00:00Z",
+      "progress": 65,
+      "latest_log": "C-5レポート起点の施策対応中。sales-growth-guideリライト完了・Notion更新済み。super-paypay-matsuri-guideはC-4校閲中。banner-creation-guide・product-listing-tipsはNotion手動修正待ち。gratitude-day役割分担リライト起票済み。",
+      "updated_at": "2026-06-04T10:00:00Z",
       "todos": 0
     },
     {
