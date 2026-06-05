@@ -192,6 +192,9 @@
   .feed-pj { font-size: 10px; font-family: var(--mono); color: var(--text3); margin-top: 2px; }
   .feed-time { font-size: 10px; font-family: var(--mono); color: var(--text3); margin-top: 3px; }
   .feed-empty { font-size: 12.5px; color: var(--text3); text-align: center; padding: 24px 0; }
+  .feed-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 7px; font-size: 11.5px; font-weight: 600; color: var(--blue); text-decoration: none; background: var(--blue-bg); padding: 4px 9px; border-radius: 7px; transition: filter 0.15s; }
+  .feed-link:hover { filter: brightness(0.95); text-decoration: underline; }
+  .feed-link svg { width: 12px; height: 12px; }
 
   /* Fade in */
   .pj-card { animation: fadeUp 0.3s ease both; }
@@ -419,7 +422,7 @@ const DUMMY = {
   ],
   alerts: [
     { type: "error", project_id: "data-migration", message: "DB接続エラー — 環境変数 DB_HOST を確認", time: "2024-06-04T13:47:00Z" },
-    { type: "waiting", project_id: "api-v2", message: "OpenAPI仕様書のレビューをお願いします", time: "2024-06-04T13:32:00Z" }
+    { type: "waiting", project_id: "api-v2", message: "OpenAPI仕様書のレビューをお願いします", time: "2024-06-04T13:32:00Z", url: "https://example.com", url_label: "リンクを開く" }
   ]
 };
 
@@ -524,6 +527,7 @@ function feedHTML(alerts) {
     const isErr = a.type === "error";
     const ico = isErr ? ICON_WARN : ICON_CLOCK;
     const bg = isErr ? "background:var(--red-bg);color:var(--red)" : "background:var(--amber-bg);color:var(--amber)";
+    const link = a.url ? `<a class="feed-link" href="${a.url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10.5 13.5"/><path d="M19 13.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4.5"/></svg>${a.url_label || "リンクを開く"}</a>` : "";
     return `
       <div class="feed-item">
         <div class="feed-ico" style="${bg}">${ico}</div>
@@ -531,6 +535,7 @@ function feedHTML(alerts) {
           <div class="feed-msg">${a.message}</div>
           <div class="feed-pj">${a.project_id}</div>
           <div class="feed-time">${timeAgo(a.time)}</div>
+          ${link}
         </div>
       </div>`;
   }).join("");
