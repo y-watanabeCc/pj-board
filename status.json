@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-05T05:50:27Z",
+  "updated_at": "2026-06-05T05:58:29Z",
   "summary": {
     "total": 4,
     "active": 3,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 7,
+    "tasks_done_today": 8,
     "alerts": 1
   },
   "projects": [
@@ -118,14 +118,14 @@
       "name": "会計・経費精算",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/kaikei",
       "status": "active",
-      "progress": 0,
-      "latest_log": "本店移転関連の立替経費精算・仕訳が未処理。6月・7月の給与集計時に手動加算が必要。",
-      "updated_at": "2026-06-04T12:00:00Z",
-      "todos": 3,
+      "progress": 33,
+      "latest_log": "UPSIDER郵便代の仕訳完了（No.2274 通信費/郵便・切手）。残り2件は6月・7月の給与集計時に対応。",
+      "updated_at": "2026-06-04T12:30:00Z",
+      "todos": 2,
       "tasks": [
         {
-          "label": "UPSIDER郵便代の仕訳（自動連携後に科目確認・登録）",
-          "done": false
+          "label": "UPSIDER郵便代の仕訳（No.2274 通信費/郵便・切手）",
+          "done": true
         },
         {
           "label": "6月給与集計（6/20）：立替経費 +¥600 手動加算（5/29 登記事項証明書）",
