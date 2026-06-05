@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-05T06:08:17Z",
+  "updated_at": "2026-06-05T06:14:02Z",
   "summary": {
     "total": 4,
     "active": 3,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 9,
+    "tasks_done_today": 8,
     "alerts": 1
   },
   "projects": [
@@ -56,14 +56,43 @@
     },
     {
       "id": "backoffice",
-      "name": "バックオフィス",
+      "name": "労務PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
       "status": "active",
-      "progress": 0,
-      "latest_log": "会計・経費精算PJをダッシュボードに追加。UPSIDER郵便代の仕訳完了。本店移転登記完了待ち（6/10〜14頃）。",
-      "updated_at": "2026-06-04T13:00:00Z",
-      "todos": 0,
-      "tasks": []
+      "progress": 15,
+      "latest_log": "出向スタッフ健診PJ進行中。オーガランドとの合意完了（6/2）。次はスタッフへ案内文送付（〜7月中）。",
+      "updated_at": "2026-06-04T13:30:00Z",
+      "todos": 5,
+      "tasks": [
+        {
+          "label": "オーガランド（荒瀬さん）との方針合意完了（6/2）",
+          "done": true
+        },
+        {
+          "label": "スタッフ3名へ案内文を送付（〜7月中）",
+          "done": false
+        },
+        {
+          "label": "各自クリニックリサーチ・報告（8/31まで）",
+          "done": false
+        },
+        {
+          "label": "クリニック条件確認 → オーガランドへ承認依頼",
+          "done": false
+        },
+        {
+          "label": "スタッフ各自で予約完了（10月受診）",
+          "done": false
+        },
+        {
+          "label": "受診実施・健診結果をオーガランドへ提出",
+          "done": false
+        },
+        {
+          "label": "費用精算（福利厚生費で仕訳）",
+          "done": false
+        }
+      ]
     },
     {
       "id": "honten-iten",
