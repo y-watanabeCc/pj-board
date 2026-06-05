@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Board — Ver2</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --sidebar: #fbfbfd;
+    --text: #1d1d1f;
+    --text2: #6e6e73;
+    --text3: #a1a1a6;
+    --border: #e5e5e7;
+    --border2: #d2d2d7;
+
+    --purple: #636366;
+    --purple-dark: #48484a;
+    --purple-bg: #ececee;
+
+    --green: #34c759;
+    --green-bg: #e7f8ec;
+    --amber: #ff9500;
+    --amber-bg: #fff2e0;
+    --red: #ff3b30;
+    --red-bg: #ffeceb;
+    --blue: #007aff;
+    --blue-bg: #e6f1ff;
+
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+    --mono: ui-monospace, 'SF Mono', Menlo, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Helvetica Neue', sans-serif;
+  }
+
+  html { background:
+      radial-gradient(900px 520px at 88% -8%, #e6ebf3 0%, rgba(230,235,243,0) 60%),
+      radial-gradient(760px 520px at -6% 112%, #eaedf3 0%, rgba(234,237,243,0) 55%),
+      var(--bg);
+    background-attachment: fixed; color: var(--text); font-family: var(--sans); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; display: flex; }
+  svg { display: block; }
+
+  /* ── Sidebar ────────────────────────── */
+  .sidebar { width: 230px; flex-shrink: 0; background: rgba(251,251,253,0.72); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-right: 1px solid rgba(0,0,0,0.07); height: 100vh; position: sticky; top: 0; display: flex; flex-direction: column; padding: 22px 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; padding: 4px 8px 22px; }
+  .brand-mark { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--purple), #8e8e93); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 16px; box-shadow: 0 4px 12px rgba(99,99,102,0.4); }
+  .brand-name { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+  .brand-sub { font-size: 10px; color: var(--text3); font-family: var(--mono); }
+
+  .nav-label { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 10px 6px; }
+  .nav-item { display: flex; align-items: center; gap: 11px; padding: 9px 11px; border-radius: 10px; font-size: 13px; font-weight: 500; color: var(--text2); cursor: pointer; transition: background 0.15s, color 0.15s; border: none; background: none; width: 100%; text-align: left; font-family: var(--sans); text-decoration: none; }
+  .nav-badge { margin-left: auto; font-size: 10px; font-family: var(--mono); background: var(--red); color: #fff; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; }
+  .nav-item:hover { background: var(--bg); color: var(--text); }
+  .nav-item.active { background: var(--purple-bg); color: var(--purple-dark); font-weight: 600; }
+  .nav-item .ico { width: 16px; text-align: center; font-size: 14px; }
+  .nav-item .count { margin-left: auto; font-size: 11px; font-family: var(--mono); color: var(--text3); background: var(--bg); padding: 1px 7px; border-radius: 20px; }
+  .nav-item.active .count { background: #fff; color: var(--purple-dark); }
+  .nav-item .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot.green{background:var(--green)} .dot.amber{background:var(--amber)} .dot.blue{background:var(--blue)} .dot.red{background:var(--red)}
+
+  .sidebar-foot { margin-top: auto; padding: 10px; font-size: 10px; font-family: var(--mono); color: var(--text3); border-top: 1px solid var(--border); }
+  .sidebar-foot .live { display: flex; align-items: center; gap: 6px; color: var(--green); margin-bottom: 4px; }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ── Main ───────────────────────────── */
+  .main { flex: 1; min-width: 0; padding: 26px 32px 40px; max-width: 1240px; }
+
+  /* Welcome banner */
+  .banner { background: rgba(255,255,255,0.62); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border: 1px solid rgba(255,255,255,0.7); border-radius: 18px; padding: 22px 26px; margin-bottom: 18px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .banner-avatar { width: 52px; height: 52px; border-radius: 14px; background: var(--purple-bg); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .banner-text { flex: 1; min-width: 200px; }
+  .banner-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .banner-sub { font-size: 13px; color: var(--text2); margin-top: 2px; }
+  .banner-actions { display: flex; align-items: center; gap: 10px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 7px; border-radius: 11px; padding: 9px 15px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: all 0.15s; font-family: var(--sans); border: 1px solid var(--border2); background: #fff; color: var(--text); }
+  .btn:hover { border-color: var(--purple); color: var(--purple-dark); }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: linear-gradient(135deg, var(--purple), #8e8e93); color: #fff; border: none; box-shadow: 0 4px 14px rgba(99,99,102,0.35); }
+  .btn-primary:hover { color: #fff; filter: brightness(1.05); }
+  .btn.loading .refresh-icon { animation: spin 0.6s linear infinite; }
+  .refresh-icon { display: inline-block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .toggle-wrap { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+  .toggle-label { font-size: 12px; font-weight: 500; color: var(--text2); }
+  .toggle { position: relative; display: inline-flex; }
+  .toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .toggle-track { width: 38px; height: 22px; background: #e3e4e8; border-radius: 22px; transition: background 0.2s; display: flex; align-items: center; padding: 0 3px; }
+  .toggle-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .toggle input:checked + .toggle-track { background: var(--green); }
+  .toggle input:checked + .toggle-track .toggle-thumb { transform: translateX(16px); }
+
+  /* Status badges row */
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; align-items: center; }
+  .badge { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; padding: 6px 13px; border-radius: 20px; }
+  .badge.purple { background: var(--purple-bg); color: var(--purple-dark); }
+  .badge.green { background: var(--green-bg); color: var(--green); }
+  .badge .b-strength { display: flex; align-items: center; gap: 8px; }
+  .strength-bar { width: 90px; height: 6px; border-radius: 6px; background: #e3e4e8; overflow: hidden; }
+  .strength-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--purple), #8e8e93); }
+  .badge-plain { font-size: 12px; color: var(--text2); display: flex; align-items: center; gap: 8px; font-weight: 500; }
+
+  /* Metrics */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+  .metric { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); transition: transform 0.15s, box-shadow 0.15s; }
+  .metric:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .metric-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .metric-label { font-size: 12px; font-weight: 600; color: var(--text2); }
+  .metric-ico { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .ico-purple { background: var(--purple-bg); color: var(--purple-dark); }
+  .ico-green { background: var(--green-bg); color: var(--green); }
+  .ico-blue { background: var(--blue-bg); color: var(--blue); }
+  .ico-red { background: var(--red-bg); color: var(--red); }
+  .metric-val { font-size: 30px; font-weight: 800; line-height: 1; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .metric-sub { font-size: 11.5px; color: var(--text3); font-weight: 500; }
+  .metric.alert .metric-val { color: var(--red); }
+  .metric.okv .metric-val { color: var(--green); }
+
+  /* Two-column layout */
+  .layout { display: grid; grid-template-columns: 1fr 320px; gap: 16px; align-items: start; }
+  .panel { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
+  .panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; flex-wrap: wrap; }
+  .panel-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .panel-sub { font-size: 11.5px; color: var(--text3); font-weight: 500; }
+
+  /* Segmented control (macOS風) */
+  .segmented { display: inline-flex; background: #e8e8ea; border-radius: 9px; padding: 2px; gap: 2px; max-width: 100%; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+  .segmented::-webkit-scrollbar { display: none; }
+  .seg-btn { display: inline-flex; align-items: center; gap: 5px; border: none; background: none; font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--text2); padding: 5px 11px; border-radius: 7px; cursor: pointer; transition: background 0.15s, color 0.15s, box-shadow 0.15s; white-space: nowrap; }
+  .seg-btn:hover { color: var(--text); }
+  .seg-btn.active { background: #fff; color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,0.14), 0 0 0 0.5px rgba(0,0,0,0.04); font-weight: 600; }
+  .seg-cnt { font-family: var(--mono); font-size: 10.5px; color: var(--text3); }
+  .seg-btn.active .seg-cnt { color: var(--text2); }
+
+  /* Line icons (SF Symbols風) */
+  .metric-ico svg { width: 18px; height: 18px; }
+  .feed-ico svg { width: 15px; height: 15px; }
+  .nav-item .ico svg { width: 16px; height: 16px; }
+  .badge svg { width: 13px; height: 13px; }
+  .btn svg { width: 14px; height: 14px; }
+  .refresh-icon { display: inline-flex; align-items: center; }
+  .bdot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+  /* Project cards */
+  .pj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .pj-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 16px; position: relative; overflow: hidden; transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s; cursor: pointer; }
+  .pj-card:hover { border-color: var(--border2); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .pj-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+  .pj-card.active::before { background: var(--green); }
+  .pj-card.waiting::before { background: var(--amber); }
+  .pj-card.done::before { background: var(--blue); }
+  .pj-card.error::before { background: var(--red); }
+
+  .pj-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 11px; }
+  .pj-name { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 3px; }
+  .pj-dir { font-size: 10px; font-family: var(--mono); color: var(--text3); word-break: break-all; }
+
+  .pill { font-size: 10.5px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+  .pill.active { background: var(--green-bg); color: var(--green); }
+  .pill.waiting { background: var(--amber-bg); color: var(--amber); }
+  .pill.done { background: var(--blue-bg); color: var(--blue); }
+  .pill.error { background: var(--red-bg); color: var(--red); }
+
+  .progress { height: 6px; background: #eef0f2; border-radius: 6px; margin-bottom: 11px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 6px; transition: width 0.5s ease; }
+  .active .progress-fill { background: var(--green); }
+  .waiting .progress-fill { background: var(--amber); }
+  .done .progress-fill { background: var(--blue); }
+  .error .progress-fill { background: var(--red); }
+
+  .pj-log { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom: 11px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.7em; }
+  .pj-log.error-log { color: var(--red); }
+
+  .pj-meta { display: flex; gap: 12px; align-items: center; }
+  .meta { font-size: 10.5px; font-family: var(--mono); color: var(--text3); }
+  .meta.strong { color: var(--text2); font-weight: 500; }
+  .meta.warn { color: var(--red); }
+
+  /* Activity feed */
+  .feed { display: flex; flex-direction: column; }
+  .feed-item { display: flex; gap: 11px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .feed-item:last-child { border-bottom: none; }
+  .feed-ico { width: 30px; height: 30px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+  .feed-body { flex: 1; min-width: 0; }
+  .feed-msg { font-size: 12.5px; color: var(--text); line-height: 1.45; }
+  .feed-pj { font-size: 10px; font-family: var(--mono); color: var(--text3); margin-top: 2px; }
+  .feed-time { font-size: 10px; font-family: var(--mono); color: var(--text3); margin-top: 3px; }
+  .feed-empty { font-size: 12.5px; color: var(--text3); text-align: center; padding: 24px 0; }
+
+  /* Fade in */
+  .pj-card { animation: fadeUp 0.3s ease both; }
+  .pj-card:nth-child(1){animation-delay:.04s} .pj-card:nth-child(2){animation-delay:.08s} .pj-card:nth-child(3){animation-delay:.12s} .pj-card:nth-child(4){animation-delay:.16s} .pj-card:nth-child(5){animation-delay:.2s} .pj-card:nth-child(6){animation-delay:.24s}
+  @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  #error-banner { display: none; background: var(--red-bg); border: 1px solid var(--red); color: var(--red); font-size: 12px; font-weight: 600; padding: 10px 16px; border-radius: 12px; margin-bottom: 16px; }
+
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); z-index: 9999; overflow-y: auto; padding: 2rem 1rem; animation: overlayIn 0.2s ease both; }
+  .modal-box { background: var(--card); border-radius: 20px; padding: 26px; width: 100%; max-width: 540px; margin: 0 auto; box-shadow: var(--shadow-lg); transform-origin: center top; animation: modalPop 0.3s cubic-bezier(0.2, 0.85, 0.3, 1.15) both; }
+  @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes modalPop { from { opacity: 0; transform: scale(0.93) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+  .modal-pj-name { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .modal-pj-dir { font-size: 10px; font-family: var(--mono); color: var(--text3); word-break: break-all; }
+  .modal-close { background: var(--bg); border: none; color: var(--text2); font-size: 14px; cursor: pointer; width: 30px; height: 30px; border-radius: 9px; transition: all 0.15s; flex-shrink: 0; }
+  .modal-close:hover { background: var(--red-bg); color: var(--red); }
+  .modal-progress-pct { font-size: 11px; font-family: var(--mono); color: var(--text2); text-align: right; margin-bottom: 6px; font-weight: 500; }
+  .modal-section-label { font-size: 10.5px; font-weight: 600; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; margin: 20px 0 11px; }
+  .task-list { display: flex; flex-direction: column; gap: 9px; }
+  .task-item { display: flex; align-items: center; gap: 11px; font-size: 13px; color: var(--text); }
+  .task-item.done { color: var(--text3); }
+  .task-label.done-label { text-decoration: line-through; }
+  .task-check { width: 18px; height: 18px; border-radius: 6px; border: 1.5px solid var(--border2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+  .task-item.done .task-check { background: var(--green); border-color: var(--green); color: #fff; }
+  .modal-log-box { font-size: 12.5px; color: var(--text2); line-height: 1.7; background: var(--bg); border-radius: 12px; padding: 14px 16px; }
+  .modal-footer { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; font-family: var(--mono); color: var(--text3); }
+
+  /* FAB */
+  .fab { position: fixed; bottom: 26px; right: 26px; width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), #8e8e93); border: none; color: #fff; cursor: pointer; box-shadow: 0 8px 24px rgba(99,99,102,0.5); transition: transform 0.15s; z-index: 50; display: flex; align-items: center; justify-content: center; }
+  .fab svg { width: 22px; height: 22px; }
+  .fab:hover { transform: scale(1.08); }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .sidebar { display: none; }
+    .main { padding: 18px 16px 80px; }
+    .pj-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Sidebar ── -->
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">P</div>
+    <div>
+      <div class="brand-name">Project Board</div>
+      <div class="brand-sub">Claude Code</div>
+    </div>
+  </div>
+
+  <div class="nav-label">メニュー</div>
+  <button class="nav-item nav-scroll active" data-scroll="top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span> ダッシュボード</button>
+  <button class="nav-item nav-scroll" data-scroll="panel-projects"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="8.5" y1="7" x2="20" y2="7"/><line x1="8.5" y1="12" x2="20" y2="12"/><line x1="8.5" y1="17" x2="20" y2="17"/><circle cx="4.2" cy="7" r="1.1"/><circle cx="4.2" cy="12" r="1.1"/><circle cx="4.2" cy="17" r="1.1"/></svg></span> プロジェクト</button>
+  <button class="nav-item" id="nav-activity"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5a6 6 0 0 1 12 0c0 4.5 2 5.5 2 5.5H4s2-1 2-5.5z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span> アクティビティ<span class="nav-badge" id="nav-alert-count" style="display:none">0</span></button>
+  <button class="nav-item" id="nav-refresh"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-2.4-5.9"/><polyline points="20.5 4 20.5 9 15.5 9"/></svg></span> 進捗を更新</button>
+
+  <div class="nav-label">リンク</div>
+  <a class="nav-item" href="dashboard.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10.5 13.5"/><path d="M19 13.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4.5"/></svg></span> Ver1（旧デザイン）</a>
+  <a class="nav-item" href="https://github.com/y-watanabeCc/pj-board" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 8 5 12 9 16"/><polyline points="15 8 19 12 15 16"/></svg></span> GitHub リポジトリ</a>
+
+  <div class="sidebar-foot">
+    <div class="live"><span class="live-dot"></span> LIVE</div>
+    <div id="side-update">更新: —</div>
+  </div>
+</aside>
+
+<!-- ── Main ── -->
+<main class="main">
+
+  <div id="error-banner">⚠ status.json を読み込めませんでした。ダミーデータを表示しています。</div>
+
+  <!-- Welcome banner -->
+  <div class="banner">
+    <div class="banner-text">
+      <div class="banner-title" id="dash-title">Welcome Back !</div>
+    </div>
+    <div class="banner-actions">
+      <button id="refresh-btn" class="btn btn-primary"><span class="refresh-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-2.4-5.9"/><polyline points="20.5 4 20.5 9 15.5 9"/></svg></span> PJ進捗更新</button>
+      <label class="toggle-wrap">
+        <span class="toggle-label">自動更新</span>
+        <span class="toggle">
+          <input type="checkbox" id="auto-toggle">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Status badges -->
+  <div class="badges">
+    <span class="badge purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5a2 2 0 0 1 2-2h3.2a2 2 0 0 1 1.4.6l1.2 1.2a2 2 0 0 0 1.4.6H19a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span id="badge-total-txt">プロジェクト 0件</span></span>
+    <span class="badge green"><span class="bdot"></span><span id="badge-active-txt">作業中 0件</span></span>
+    <span class="badge-plain">
+      <span>全体進捗</span>
+      <span class="b-strength">
+        <span class="strength-bar"><span class="strength-fill" id="strength-fill" style="width:0%"></span></span>
+        <span id="strength-pct" style="font-weight:600;color:var(--text)">0%</span>
+      </span>
+    </span>
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-head"><span class="metric-label">総プロジェクト</span><span class="metric-ico ico-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5a2 2 0 0 1 2-2h3.2a2 2 0 0 1 1.4.6l1.2 1.2a2 2 0 0 0 1.4.6H19a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span></div>
+      <div class="metric-val" id="m-total">—</div>
+      <div class="metric-sub" id="m-total-sub">—</div>
+    </div>
+    <div class="metric okv">
+      <div class="metric-head"><span class="metric-label">稼働中エージェント</span><span class="metric-ico ico-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6z"/></svg></span></div>
+      <div class="metric-val" id="m-active">—</div>
+      <div class="metric-sub" id="m-active-sub">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-head"><span class="metric-label">本日のコミット</span><span class="metric-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 16.5 9.5 10 13.5 14 21 6.5"/><polyline points="15.5 6.5 21 6.5 21 12"/></svg></span></div>
+      <div class="metric-val" id="m-commits">—</div>
+      <div class="metric-sub" id="m-commits-sub">—</div>
+    </div>
+    <div class="metric alert">
+      <div class="metric-head"><span class="metric-label">要確認</span><span class="metric-ico ico-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 4.2 2.5 17.8A1.7 1.7 0 0 0 4 20.4h16a1.7 1.7 0 0 0 1.5-2.6L13.7 4.2a1.7 1.7 0 0 0-3 0z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.7" x2="12" y2="16.8"/></svg></span></div>
+      <div class="metric-val" id="m-alerts">—</div>
+      <div class="metric-sub" id="m-alerts-sub">—</div>
+    </div>
+  </div>
+
+  <!-- Two columns -->
+  <div class="layout">
+    <div class="panel" id="panel-projects" style="scroll-margin-top:20px">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">プロジェクト</div>
+          <div class="panel-sub" id="grid-sub">全プロジェクトの進捗状況</div>
+        </div>
+        <div class="segmented" id="filter-seg">
+          <button class="seg-btn active" data-filter="all">すべて<span class="seg-cnt" id="seg-all">0</span></button>
+          <button class="seg-btn" data-filter="active">作業中<span class="seg-cnt" id="seg-active">0</span></button>
+          <button class="seg-btn" data-filter="waiting">承認待ち<span class="seg-cnt" id="seg-waiting">0</span></button>
+          <button class="seg-btn" data-filter="done">完了<span class="seg-cnt" id="seg-done">0</span></button>
+          <button class="seg-btn" data-filter="error">エラー<span class="seg-cnt" id="seg-error">0</span></button>
+        </div>
+      </div>
+      <div class="pj-grid" id="pj-grid"></div>
+    </div>
+
+    <div class="panel" id="panel-activity" style="scroll-margin-top:20px">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">アクティビティ</div>
+          <div class="panel-sub">要確認 / 最近の動き</div>
+        </div>
+      </div>
+      <div class="feed" id="feed"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FAB -->
+<button class="fab" id="fab" title="PJ進捗更新"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-2.4-5.9"/><polyline points="20.5 4 20.5 9 15.5 9"/></svg></button>
+
+<!-- 詳細モーダル -->
+<div id="modal-overlay" class="modal-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div style="flex:1;min-width:0;margin-right:12px;">
+        <div class="modal-pj-name" id="modal-name"></div>
+        <div class="modal-pj-dir" id="modal-dir"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+        <span class="pill" id="modal-pill"></span>
+        <button class="modal-close" id="modal-close" aria-label="閉じる">✕</button>
+      </div>
+    </div>
+    <div>
+      <div class="modal-progress-pct" id="modal-pct"></div>
+      <div class="progress"><div class="progress-fill" id="modal-progress-fill" style="width:0%"></div></div>
+    </div>
+    <div id="modal-tasks-section">
+      <div class="modal-section-label">タスク</div>
+      <div class="task-list" id="modal-task-list"></div>
+    </div>
+    <div class="modal-section-label">最新ログ</div>
+    <div class="modal-log-box" id="modal-log"></div>
+    <div class="modal-footer">
+      <span id="modal-updated"></span>
+      <span id="modal-todos-label"></span>
+    </div>
+  </div>
+</div>
+
+<!-- アクティビティモーダル -->
+<div id="activity-modal" class="modal-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div style="flex:1;min-width:0;margin-right:12px;">
+        <div class="modal-pj-name">アクティビティ</div>
+        <div class="modal-pj-dir">要確認 / 最近の動き</div>
+      </div>
+      <button class="modal-close" id="activity-close" aria-label="閉じる">✕</button>
+    </div>
+    <div class="feed" id="activity-modal-feed"></div>
+  </div>
+</div>
+
+<script>
+const DUMMY = {
+  title: "Project Dashboard",
+  updated_at: new Date().toISOString(),
+  summary: { total: 6, active: 3, waiting: 1, done: 1, error: 1, commits_today: 27, commits_add: 841, commits_del: 203, tasks_done_today: 14, alerts: 2 },
+  projects: [
+    { id: "ec-renewal", name: "ECサイトリニューアル", dir: "/projects/ec-renewal", status: "active", progress: 68, latest_log: "カート機能のユニットテスト追加中。決済APIのモック実装完了。", updated_at: "2024-06-04T14:29:00Z", todos: 5 },
+    { id: "internal-dash", name: "社内ダッシュボード", dir: "/projects/internal-dash", status: "active", progress: 42, latest_log: "グラフコンポーネントのレスポンシブ対応。Rechartsでの折れ線グラフ実装中。", updated_at: "2024-06-04T14:20:00Z", todos: 8 },
+    { id: "api-v2", name: "API v2 設計", dir: "/projects/api-v2", status: "waiting", progress: 85, latest_log: "OpenAPI仕様書のドラフト完成。レビュー待ち状態で停止中。", updated_at: "2024-06-04T13:32:00Z", todos: 2 },
+    { id: "data-migration", name: "データ移行スクリプト", dir: "/projects/data-migration", status: "error", progress: 55, latest_log: "DB接続タイムアウト。環境変数 DB_HOST の設定を確認してください。", updated_at: "2024-06-04T13:47:00Z", todos: 0 },
+    { id: "auth-module", name: "認証モジュール", dir: "/projects/auth-module", status: "done", progress: 100, latest_log: "JWT実装・テスト・ドキュメント整備まで全タスク完了。", updated_at: "2024-06-03T18:00:00Z", todos: 0 },
+    { id: "notification", name: "通知システム", dir: "/projects/notification", status: "active", progress: 25, latest_log: "Webhookのスキーマ設計開始。まだ初期段階。", updated_at: "2024-06-04T12:32:00Z", todos: 12 }
+  ],
+  alerts: [
+    { type: "error", project_id: "data-migration", message: "DB接続エラー — 環境変数 DB_HOST を確認", time: "2024-06-04T13:47:00Z" },
+    { type: "waiting", project_id: "api-v2", message: "OpenAPI仕様書のレビューをお願いします", time: "2024-06-04T13:32:00Z" }
+  ]
+};
+
+const STATUS_MAP = { active: "作業中", waiting: "承認待ち", done: "完了", error: "エラー" };
+const STATUS_COLORS = { active: "var(--green)", waiting: "var(--amber)", done: "var(--blue)", error: "var(--red)" };
+let projectsData = [];
+let allProjects = [];
+let activeFilter = "all";
+let latestData = null;
+
+function timeAgo(iso) {
+  const diff = (Date.now() - new Date(iso)) / 1000;
+  if (diff < 60) return "今";
+  if (diff < 3600) return Math.floor(diff / 60) + "分前";
+  if (diff < 86400) return Math.floor(diff / 3600) + "時間前";
+  return Math.floor(diff / 86400) + "日前";
+}
+
+function renderGrid() {
+  const filtered = activeFilter === "all" ? allProjects : allProjects.filter(p => p.status === activeFilter);
+  projectsData = filtered;
+  const grid = document.getElementById("pj-grid");
+  document.getElementById("grid-sub").textContent =
+    activeFilter === "all" ? "全プロジェクトの進捗状況" : (STATUS_MAP[activeFilter] + "のプロジェクト");
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="feed-empty" style="grid-column:1/-1">該当するプロジェクトはありません</div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map((p, i) => `
+    <div class="pj-card ${p.status}" data-pj-index="${i}">
+      <div class="pj-top">
+        <div style="min-width:0">
+          <div class="pj-name">${p.name}</div>
+          <div class="pj-dir">${p.dir}</div>
+        </div>
+        <span class="pill ${p.status}">${STATUS_MAP[p.status] || p.status}</span>
+      </div>
+      <div class="progress"><div class="progress-fill" style="width:${p.progress}%"></div></div>
+      <div class="pj-log ${p.status === 'error' ? 'error-log' : ''}">${p.latest_log}</div>
+      <div class="pj-meta">
+        <span class="meta strong">${p.progress}%</span>
+        <span class="meta">${timeAgo(p.updated_at)}</span>
+        ${p.todos > 0 ? `<span class="meta">TODO ${p.todos}件</span>` : ''}
+        ${p.status === 'error' ? `<span class="meta warn">要対応</span>` : ''}
+      </div>
+    </div>
+  `).join("");
+}
+
+function render(data) {
+  const s = data.summary;
+
+  document.getElementById("dash-title").textContent = "Welcome Back !";
+  const upd = new Date(data.updated_at).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  document.getElementById("side-update").textContent = "更新: " + upd;
+
+  document.getElementById("m-total").textContent = s.total;
+  document.getElementById("m-total-sub").textContent = `作業中 ${s.active} / 完了 ${s.done} / エラー ${s.error}`;
+  document.getElementById("m-active").textContent = s.active;
+  document.getElementById("m-active-sub").textContent = `今日のタスク完了: ${s.tasks_done_today}件`;
+  document.getElementById("m-commits").textContent = s.commits_today;
+  document.getElementById("m-commits-sub").textContent = `+${s.commits_add} / -${s.commits_del}`;
+  document.getElementById("m-alerts").textContent = s.alerts;
+  document.getElementById("m-alerts-sub").textContent = "エラー / 承認待ち";
+
+  // サイドバーの通知バッジ
+  const navBadge = document.getElementById("nav-alert-count");
+  if (s.alerts > 0) { navBadge.style.display = "inline-flex"; navBadge.textContent = s.alerts; }
+  else { navBadge.style.display = "none"; }
+
+  // バッジ
+  document.getElementById("badge-total-txt").textContent = `プロジェクト ${s.total}件`;
+  document.getElementById("badge-active-txt").textContent = `作業中 ${s.active}件`;
+  const avg = data.projects.length ? Math.round(data.projects.reduce((a, p) => a + (p.progress || 0), 0) / data.projects.length) : 0;
+  document.getElementById("strength-fill").style.width = avg + "%";
+  document.getElementById("strength-pct").textContent = avg + "%";
+
+  // セグメントの件数
+  allProjects = data.projects;
+  const cnt = { all: data.projects.length, active: 0, waiting: 0, done: 0, error: 0 };
+  data.projects.forEach(p => { if (cnt[p.status] !== undefined) cnt[p.status]++; });
+  ["all", "active", "waiting", "done", "error"].forEach(k => {
+    const el = document.getElementById("seg-" + k); if (el) el.textContent = cnt[k];
+  });
+
+  renderGrid();
+
+  // アクティビティフィード
+  latestData = data;
+  document.getElementById("feed").innerHTML = feedHTML(data.alerts);
+}
+
+// アクティビティ一覧のHTMLを生成（サイドパネル・モーダル共通）
+function feedHTML(alerts) {
+  if (!alerts || alerts.length === 0) {
+    return `<div class="feed-empty" style="display:flex;align-items:center;justify-content:center;gap:7px;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--green)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17.5 19 7"/></svg> 要対応のアラートはありません</div>`;
+  }
+  const ICON_WARN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 4.2 2.5 17.8A1.7 1.7 0 0 0 4 20.4h16a1.7 1.7 0 0 0 1.5-2.6L13.7 4.2a1.7 1.7 0 0 0-3 0z"/><line x1="12" y1="9.5" x2="12" y2="13.5"/><line x1="12" y1="16.7" x2="12" y2="16.8"/></svg>`;
+  const ICON_CLOCK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.2 1.9"/></svg>`;
+  return alerts.map(a => {
+    const isErr = a.type === "error";
+    const ico = isErr ? ICON_WARN : ICON_CLOCK;
+    const bg = isErr ? "background:var(--red-bg);color:var(--red)" : "background:var(--amber-bg);color:var(--amber)";
+    return `
+      <div class="feed-item">
+        <div class="feed-ico" style="${bg}">${ico}</div>
+        <div class="feed-body">
+          <div class="feed-msg">${a.message}</div>
+          <div class="feed-pj">${a.project_id}</div>
+          <div class="feed-time">${timeAgo(a.time)}</div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+async function load(isManual) {
+  const btn = document.getElementById("refresh-btn");
+  if (isManual) btn.classList.add("loading");
+  try {
+    const res = await fetch("status.json?t=" + Date.now());
+    if (!res.ok) throw new Error("not found");
+    const data = await res.json();
+    document.getElementById("error-banner").style.display = "none";
+    render(data);
+  } catch {
+    document.getElementById("error-banner").style.display = "block";
+    render(DUMMY);
+  }
+  if (isManual) setTimeout(() => btn.classList.remove("loading"), 400);
+}
+
+const AUTO_INTERVAL = 30000;
+let autoTimer = null;
+const autoToggle = document.getElementById("auto-toggle");
+
+function setAuto(on) {
+  if (on) {
+    if (!autoTimer) autoTimer = setInterval(() => load(false), AUTO_INTERVAL);
+    load(false);
+  } else {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+  }
+}
+
+document.getElementById("refresh-btn").addEventListener("click", () => load(true));
+document.getElementById("fab").addEventListener("click", () => load(true));
+autoToggle.addEventListener("change", (e) => setAuto(e.target.checked));
+
+// サイドバー：セクションへスクロール
+document.querySelectorAll(".nav-scroll").forEach(b => {
+  b.addEventListener("click", () => {
+    document.querySelectorAll(".nav-scroll").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    const t = b.dataset.scroll;
+    if (t === "top") { window.scrollTo({ top: 0, behavior: "smooth" }); }
+    else { const el = document.getElementById(t); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  });
+});
+// サイドバー：進捗を更新
+document.getElementById("nav-refresh").addEventListener("click", () => load(true));
+
+// サイドバー：アクティビティをモーダルで開く
+function openActivityModal() {
+  document.getElementById("activity-modal-feed").innerHTML = feedHTML(latestData ? latestData.alerts : []);
+  const ov = document.getElementById("activity-modal");
+  ov.style.display = "block";
+  ov.scrollTop = 0;
+}
+function closeActivityModal() { document.getElementById("activity-modal").style.display = "none"; }
+document.getElementById("nav-activity").addEventListener("click", openActivityModal);
+document.getElementById("activity-close").addEventListener("click", closeActivityModal);
+document.getElementById("activity-modal").addEventListener("click", e => {
+  if (e.target === document.getElementById("activity-modal")) closeActivityModal();
+});
+
+// フィルター（セグメントコントロール）
+document.querySelectorAll(".seg-btn").forEach(b => {
+  b.addEventListener("click", () => {
+    document.querySelectorAll(".seg-btn").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    activeFilter = b.dataset.filter;
+    renderGrid();
+  });
+});
+
+// ── モーダル ──
+function openModal(p) {
+  const overlay = document.getElementById("modal-overlay");
+  document.getElementById("modal-name").textContent = p.name;
+  document.getElementById("modal-dir").textContent = p.dir;
+  document.getElementById("modal-pct").textContent = p.progress + "%";
+  document.getElementById("modal-log").textContent = p.latest_log;
+
+  const pill = document.getElementById("modal-pill");
+  pill.className = "pill " + p.status;
+  pill.textContent = STATUS_MAP[p.status] || p.status;
+
+  const fill = document.getElementById("modal-progress-fill");
+  fill.style.width = p.progress + "%";
+  fill.style.background = STATUS_COLORS[p.status] || STATUS_COLORS.active;
+
+  const taskSection = document.getElementById("modal-tasks-section");
+  const taskList = document.getElementById("modal-task-list");
+  taskList.innerHTML = "";
+  if (p.tasks && p.tasks.length > 0) {
+    taskSection.style.display = "block";
+    p.tasks.forEach(t => {
+      const item = document.createElement("div");
+      item.className = "task-item" + (t.done ? " done" : "");
+      const check = document.createElement("div");
+      check.className = "task-check";
+      check.textContent = t.done ? "✓" : "";
+      const label = document.createElement("span");
+      label.className = "task-label" + (t.done ? " done-label" : "");
+      label.textContent = t.label;
+      item.appendChild(check); item.appendChild(label);
+      taskList.appendChild(item);
+    });
+  } else {
+    taskSection.style.display = "none";
+  }
+
+  document.getElementById("modal-updated").textContent = "更新: " + new Date(p.updated_at).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  document.getElementById("modal-todos-label").textContent = p.todos > 0 ? "TODO " + p.todos + "件" : "";
+
+  overlay.style.display = "block";
+  overlay.scrollTop = 0;
+}
+
+function closeModal() { document.getElementById("modal-overlay").style.display = "none"; }
+
+document.getElementById("pj-grid").addEventListener("click", e => {
+  const card = e.target.closest(".pj-card");
+  if (card && card.dataset.pjIndex !== undefined) {
+    const idx = parseInt(card.dataset.pjIndex, 10);
+    if (projectsData[idx]) openModal(projectsData[idx]);
+  }
+});
+document.getElementById("modal-close").addEventListener("click", closeModal);
+document.getElementById("modal-overlay").addEventListener("click", e => {
+  if (e.target === document.getElementById("modal-overlay")) closeModal();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") { closeModal(); closeActivityModal(); } });
+
+load(false);
+</script>
+</body>
+</html>
