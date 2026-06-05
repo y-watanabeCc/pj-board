@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-05T05:58:29Z",
+  "updated_at": "2026-06-05T06:08:17Z",
   "summary": {
     "total": 4,
     "active": 3,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 8,
+    "tasks_done_today": 9,
     "alerts": 1
   },
   "projects": [
@@ -60,8 +60,8 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
       "status": "active",
       "progress": 0,
-      "latest_log": "本店移転PJをダッシュボードに追加。登記完了待ち（6/10〜14頃）。スタッフ健診・経理対応も並行中。",
-      "updated_at": "2026-06-04T12:00:00Z",
+      "latest_log": "会計・経費精算PJをダッシュボードに追加。UPSIDER郵便代の仕訳完了。本店移転登記完了待ち（6/10〜14頃）。",
+      "updated_at": "2026-06-04T13:00:00Z",
       "todos": 0,
       "tasks": []
     },
