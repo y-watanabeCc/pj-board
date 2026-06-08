@@ -1,16 +1,16 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-05T12:23:13Z",
+  "updated_at": "2026-06-08T04:16:41Z",
   "summary": {
     "total": 5,
-    "active": 4,
+    "active": 3,
     "waiting": 1,
-    "done": 0,
+    "done": 1,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 10,
+    "tasks_done_today": 11,
     "alerts": 1
   },
   "projects": [
@@ -18,38 +18,42 @@
       "id": "yahoo-media",
       "name": "Yahoo Media PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
-      "status": "active",
+      "status": "done",
       "progress": 100,
-      "latest_log": "gratitude-day 2記事の役割分担リライト完了。banner-creation-guide・product-listing-tipsのNotion修正もすでに完了済み確認。C-5レポート起点の全施策が完了。",
-      "updated_at": "2026-06-04T11:00:00Z",
+      "latest_log": "6月の新記事1本目「ヤフショの価格競争から抜け出す方法（値下げで戦わない差別化）」をNotion掲載まで完了。あわせてメタディスクリプション登録をフローに恒久組み込み。",
+      "updated_at": "2026-06-08T05:30:00Z",
       "todos": 0,
       "tasks": [
         {
-          "label": "sales-growth-guide リライト",
+          "label": "戦略立案（テーマA-3：値下げで戦わない差別化を決定）",
           "done": true
         },
         {
-          "label": "super-paypay-matsuri-guide リライト",
+          "label": "サーチ依頼・レポート確認",
           "done": true
         },
         {
-          "label": "Notion更新（上記2記事）",
+          "label": "執筆依頼 → ドラフト品質差し戻し → 再提出合格",
           "done": true
         },
         {
-          "label": "gratitude-day-banner-guide 役割分担リライト",
+          "label": "校閲（C-4ファクトチェック）公開OK",
           "done": true
         },
         {
-          "label": "gratitude-day-strategy 役割分担リライト",
+          "label": "写真選定・最適化・Notionアップロード",
           "done": true
         },
         {
-          "label": "banner-creation-guide Notion修正",
+          "label": "STEP 7：Notion登録（文字化けゼロ確認）",
           "done": true
         },
         {
-          "label": "product-listing-tips Notion修正",
+          "label": "メタディスクリプション漏れ対応・登録フロー恒久修正",
+          "done": true
+        },
+        {
+          "label": "品質ゲート方針（差し戻し基準）の明文化",
           "done": true
         }
       ]
