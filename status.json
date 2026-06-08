@@ -1,16 +1,16 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-08T04:16:41Z",
+  "updated_at": "2026-06-08T09:27:04Z",
   "summary": {
-    "total": 5,
-    "active": 3,
+    "total": 6,
+    "active": 4,
     "waiting": 1,
     "done": 1,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 11,
+    "tasks_done_today": 13,
     "alerts": 1
   },
   "projects": [
@@ -198,6 +198,38 @@
         },
         {
           "label": "関連書面の精査・対応",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "producer-network",
+      "name": "新規事業インキュベーションPJ",
+      "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/company-agent/projects/producer-network",
+      "status": "active",
+      "progress": 15,
+      "latest_log": "新規事業インキュベーションの初期構想を整理。競合・市場のホワイトスペース分析を完了し、一次ヒアリングの設計に着手。",
+      "updated_at": "2026-06-08T07:00:00Z",
+      "todos": 3,
+      "tasks": [
+        {
+          "label": "初期構想・戦略仮説の整理",
+          "done": true
+        },
+        {
+          "label": "競合・市場のホワイトスペース分析",
+          "done": true
+        },
+        {
+          "label": "一次ヒアリングの設計（骨子）",
+          "done": true
+        },
+        {
+          "label": "一次ヒアリングの本設計・実施",
+          "done": false
+        },
+        {
+          "label": "事業仮説の検証・固め",
           "done": false
         }
       ]
