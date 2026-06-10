@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-10T03:36:31Z",
+  "updated_at": "2026-06-10T09:03:00Z",
   "summary": {
     "total": 6,
     "active": 5,
@@ -103,9 +103,9 @@
       "name": "本店移転PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/honten_iten",
       "status": "active",
-      "progress": 65,
-      "latest_log": "6/10に謄本を取得・PDF化、定款の現行版を整備、税理士へ完了報告と税務異動届を依頼（drive共有）。税務は税理士の対応待ち。次は社会保険の所在地変更届（当方対応・最優先）。",
-      "updated_at": "2026-06-10T12:30:00Z",
+      "progress": 70,
+      "latest_log": "6/10：謄本取得・PDF化、定款の現行版整備、税理士へ完了報告と税務異動届を依頼、社会保険 所在地変更届の記入が完成（謄本コピー同封して6/11投函予定）。次は労働保険→雇用保険の変更届。",
+      "updated_at": "2026-06-10T18:00:00Z",
       "todos": 4,
       "tasks": [
         {
@@ -137,7 +137,7 @@
           "done": true
         },
         {
-          "label": "社会保険 所在地変更届（新宿年金事務所・郵送可）",
+          "label": "社会保険 所在地変更届（記入完成・6/11投函予定）",
           "done": false
         },
         {
