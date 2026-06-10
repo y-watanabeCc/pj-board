@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-09T08:02:31Z",
+  "updated_at": "2026-06-10T03:36:31Z",
   "summary": {
     "total": 6,
     "active": 5,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 14,
+    "tasks_done_today": 16,
     "alerts": 0
   },
   "projects": [
@@ -103,10 +103,10 @@
       "name": "本店移転PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/honten_iten",
       "status": "active",
-      "progress": 45,
-      "latest_log": "6/9に登記完了を確認（NTAサイトで新住所反映）。フェーズ3着手。謄本（履歴事項全部証明書1通）はオンライン申請・納付済で6/10午前に受取予定。受取後に社保所在地変更届・税理士報告へ。",
-      "updated_at": "2026-06-09T18:00:00Z",
-      "todos": 5,
+      "progress": 65,
+      "latest_log": "6/10に謄本を取得・PDF化、定款の現行版を整備、税理士へ完了報告と税務異動届を依頼（drive共有）。税務は税理士の対応待ち。次は社会保険の所在地変更届（当方対応・最優先）。",
+      "updated_at": "2026-06-10T12:30:00Z",
+      "todos": 4,
       "tasks": [
         {
           "label": "書類5点作成（株主総会議事録・取締役決定書・登記申請書など）",
@@ -121,23 +121,31 @@
           "done": true
         },
         {
-          "label": "NTAサイトで登記完了確認（6/9 完了）",
+          "label": "NTAサイトで登記完了確認（6/9）",
           "done": true
         },
         {
-          "label": "謄本取得・印鑑カード交付申請（法務局）",
-          "done": false
+          "label": "謄本（履歴事項全部証明書）取得・PDF化（6/10）",
+          "done": true
         },
         {
-          "label": "社会保険 所在地変更届（年金事務所）",
-          "done": false
+          "label": "定款 現行版の整備（第3条 千代田区／令和8年6月1日変更）",
+          "done": true
         },
         {
-          "label": "税理士（inoue_munehiro）へ完了報告・税務届出依頼",
+          "label": "税理士へ完了報告・税務異動届を依頼（6/10送信・対応待ち）",
+          "done": true
+        },
+        {
+          "label": "社会保険 所在地変更届（新宿年金事務所・郵送可）",
           "done": false
         },
         {
           "label": "労働保険変更届（監督署）→ 雇用保険変更届（ハローワーク）",
+          "done": false
+        },
+        {
+          "label": "印鑑カード交付申請（東京法務局 本局・九段下）",
           "done": false
         },
         {
