@@ -1,16 +1,16 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-10T09:03:00Z",
+  "updated_at": "2026-06-10T15:47:05Z",
   "summary": {
-    "total": 6,
-    "active": 5,
+    "total": 7,
+    "active": 6,
     "waiting": 0,
     "done": 1,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 16,
+    "tasks_done_today": 19,
     "alerts": 0
   },
   "projects": [
@@ -238,6 +238,42 @@
         },
         {
           "label": "事業仮説の検証・固め",
+          "done": false
+        }
+      ]
+    },
+    {
+      "id": "magnet-growth",
+      "name": "magnet 成長施策PJ",
+      "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/company-agent/projects/magnet-growth",
+      "status": "active",
+      "progress": 20,
+      "latest_log": "主力製品magnetの成長に向けた協業案件。市場・契約データの集計と現状分析が完了し、施策方針と初回打ち合わせのストーリーを策定。打ち合わせ準備中。",
+      "updated_at": "2026-06-11T00:30:00Z",
+      "todos": 3,
+      "tasks": [
+        {
+          "label": "先方からの相談・経緯の整理",
+          "done": true
+        },
+        {
+          "label": "市場・契約データの集計／現状分析",
+          "done": true
+        },
+        {
+          "label": "施策方針・打ち合わせストーリーの策定",
+          "done": true
+        },
+        {
+          "label": "初回打ち合わせ（日程調整中）",
+          "done": false
+        },
+        {
+          "label": "提案ラフの作成",
+          "done": false
+        },
+        {
+          "label": "協業条件の折衝（渡邊担当）",
           "done": false
         }
       ]
