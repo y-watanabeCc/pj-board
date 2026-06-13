@@ -1,17 +1,17 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-11T02:41:33Z",
+  "updated_at": "2026-06-13T15:02:23Z",
   "summary": {
-    "total": 7,
+    "total": 8,
     "active": 6,
-    "waiting": 0,
+    "waiting": 1,
     "done": 1,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 17,
-    "alerts": 0
+    "tasks_done_today": 21,
+    "alerts": 1
   },
   "projects": [
     {
@@ -277,7 +277,66 @@
           "done": false
         }
       ]
+    },
+    {
+      "id": "ai-tool-subsidy",
+      "name": "AIツール利用補助PJ",
+      "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/AI利用補助",
+      "status": "waiting",
+      "progress": 25,
+      "latest_log": "方針確定：個人契約への補助ではなく『会社契約・業務専用アカウントを貸与』で進める。まず会社保有の$20プランを業務専用で使ってもらい、実使用量を把握してサイズ調整する設計。次は会社用アカウントの用意と本人への打診。",
+      "updated_at": "2026-06-13T00:00:00Z",
+      "todos": 6,
+      "tasks": [
+        {
+          "label": "方針決定（補助→会社契約/アカウント付与プラン）",
+          "done": true
+        },
+        {
+          "label": "アンチ誤魔化し設計の確定（$20スタート・メーターで判断）",
+          "done": true
+        },
+        {
+          "label": "板倉さんへの依頼文 作成（v2）",
+          "done": true
+        },
+        {
+          "label": "kiro/Claude 組織版プラン調査・経緯メモ化",
+          "done": true
+        },
+        {
+          "label": "会社用kiro専用メール用意→アカウント作成→$20決済設定",
+          "done": false
+        },
+        {
+          "label": "ログイン情報を安全に共有・依頼文を板倉さんへ送付",
+          "done": false
+        },
+        {
+          "label": "業務利用ルール合意（業務は会社アカウント／個人は別途契約）",
+          "done": false
+        },
+        {
+          "label": "数ヶ月運用→メーターで$20枠の収まり確認→必要時$40へ",
+          "done": false
+        },
+        {
+          "label": "顧問税理士へ会計処理を共有",
+          "done": false
+        },
+        {
+          "label": "〔将来〕複数人化したら組織版へ移行検討",
+          "done": false
+        }
+      ]
     }
   ],
-  "alerts": []
+  "alerts": [
+    {
+      "type": "waiting",
+      "project_id": "ai-tool-subsidy",
+      "message": "会社用kiroアカウント（専用メール・$20決済）の用意と、板倉さんへの打診（依頼文は準備済み）が次アクション。",
+      "time": "2026-06-13T00:00:00Z"
+    }
+  ]
 }
