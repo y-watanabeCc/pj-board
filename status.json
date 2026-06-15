@@ -1,17 +1,17 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-13T15:02:23Z",
+  "updated_at": "2026-06-15T16:24:08Z",
   "summary": {
     "total": 8,
     "active": 6,
-    "waiting": 1,
-    "done": 1,
+    "waiting": 0,
+    "done": 2,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 21,
-    "alerts": 1
+    "tasks_done_today": 19,
+    "alerts": 0
   },
   "projects": [
     {
@@ -282,11 +282,11 @@
       "id": "ai-tool-subsidy",
       "name": "AIツール利用補助PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/AI利用補助",
-      "status": "waiting",
-      "progress": 25,
-      "latest_log": "方針確定：個人契約への補助ではなく『会社契約・業務専用アカウントを貸与』で進める。まず会社保有の$20プランを業務専用で使ってもらい、実使用量を把握してサイズ調整する設計。次は会社用アカウントの用意と本人への打診。",
-      "updated_at": "2026-06-13T00:00:00Z",
-      "todos": 6,
+      "status": "done",
+      "progress": 100,
+      "latest_log": "板倉さんが会社契約・アカウント配布案を辞退し、自己負担での継続を選択。会社の費用負担ゼロ・事務処理ゼロで決着（補助PJクローズ）。再燃トリガー＝円安進行・プラン改定で負担増の際に再相談。情報の取り扱い等は中村のAI運営スキーム（事業部ルール）で別途カバー。",
+      "updated_at": "2026-06-14T03:00:00Z",
+      "todos": 2,
       "tasks": [
         {
           "label": "方針決定（補助→会社契約/アカウント付与プラン）",
@@ -305,38 +305,35 @@
           "done": true
         },
         {
-          "label": "会社用kiro専用メール用意→アカウント作成→$20決済設定",
+          "label": "中村へ共有・承認取得",
+          "done": true
+        },
+        {
+          "label": "アカウント管理スキーム 叩き台作成",
+          "done": true
+        },
+        {
+          "label": "AI運営スキーム 叩き台作成→中村へ事業部ルール構築用に引き継ぎ",
+          "done": true
+        },
+        {
+          "label": "板倉さんへ打診→自己負担で継続（補助は見送り）で決着",
+          "done": true
+        },
+        {
+          "label": "板倉さんへの返信（受諾＋再相談歓迎＋運用ルールは追って中村から）",
           "done": false
         },
         {
-          "label": "ログイン情報を安全に共有・依頼文を板倉さんへ送付",
+          "label": "〔別軸・中村〕事業部AI運営ルールの整備（情報取り扱い・アカウント管理）",
           "done": false
         },
         {
-          "label": "業務利用ルール合意（業務は会社アカウント／個人は別途契約）",
-          "done": false
-        },
-        {
-          "label": "数ヶ月運用→メーターで$20枠の収まり確認→必要時$40へ",
-          "done": false
-        },
-        {
-          "label": "顧問税理士へ会計処理を共有",
-          "done": false
-        },
-        {
-          "label": "〔将来〕複数人化したら組織版へ移行検討",
+          "label": "〔監視〕再燃トリガー：円安・プラン改定で負担増→再相談",
           "done": false
         }
       ]
     }
   ],
-  "alerts": [
-    {
-      "type": "waiting",
-      "project_id": "ai-tool-subsidy",
-      "message": "会社用kiroアカウント（専用メール・$20決済）の用意と、板倉さんへの打診（依頼文は準備済み）が次アクション。",
-      "time": "2026-06-13T00:00:00Z"
-    }
-  ]
+  "alerts": []
 }
