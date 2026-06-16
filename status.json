@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-15T16:24:08Z",
+  "updated_at": "2026-06-16T06:34:41Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -103,9 +103,9 @@
       "name": "本店移転PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/honten_iten",
       "status": "active",
-      "progress": 78,
-      "latest_log": "6/11：社会保険 所在地変更届を郵送（投函完了）→ 社保手続き完了。次は労働保険変更届（監督署）→ 雇用保険変更届（ハローワーク）の順で対応。税務異動届は税理士の対応待ち。",
-      "updated_at": "2026-06-11T10:00:00Z",
+      "progress": 85,
+      "latest_log": "6/16：労働保険(労災)の所在地変更届を中央労基署で提出・受理完了（労働保険番号が再付番）。雇用保険変更届は不要（労災のみ成立）。残るは税務異動届（税理士対応待ち）・社保到達確認・フェーズ4（MF/銀行/取引先/名刺など）。",
+      "updated_at": "2026-06-16T08:00:00Z",
       "todos": 3,
       "tasks": [
         {
@@ -141,7 +141,11 @@
           "done": true
         },
         {
-          "label": "労働保険変更届（監督署）→ 雇用保険変更届（ハローワーク）",
+          "label": "労働保険(労災)所在地変更届 提出・受理（6/16）※雇用保険はオーガランド付で不要",
+          "done": true
+        },
+        {
+          "label": "社保 到達確認（年金機構通知 or 東京広域事務センターへ電話）",
           "done": false
         },
         {
