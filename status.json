@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-16T15:24:52Z",
+  "updated_at": "2026-06-17T11:26:41Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 17,
+    "tasks_done_today": 16,
     "alerts": 0
   },
   "projects": [
@@ -20,32 +20,28 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
       "status": "done",
       "progress": 100,
-      "latest_log": "C-5の効果検証レポートに対応。今期最大の機会損失だった『ストアクリエイターpro』記事の共食いを解消（本命1本へ評価集約）。未インデックス記事の再クロール要求、超PayPay祭ガイドの内部リンク集約も完了。",
-      "updated_at": "2026-06-16T15:40:00Z",
+      "latest_log": "新規記事『ヤフショのPayPay還元、集客で終わっていませんか？売上に変える売り場づくりの鉄則』を公開（STEP 0〜7完了）。PayPayを正面で扱う初の記事で、既存記事との共食いを避けつつPayPay検索層を取り込む。集客を売上に変える3つの売り場対策を解説。",
+      "updated_at": "2026-06-17T11:40:00Z",
       "todos": 0,
       "tasks": [
         {
-          "label": "C-5効果検証を施策履歴に反映（効いた3件／途上2件／未達1件）",
+          "label": "STEP 0 戦略立案：共食い回避基準でテーマ選定（C-3 PayPay経済圏）",
           "done": true
         },
         {
-          "label": "共食い解消①：product-page-guide 純化（タイトル・説明文・タグ・本文）",
+          "label": "STEP 2〜4 サーチ・執筆依頼（ファクト数値は非断定で設計）",
           "done": true
         },
         {
-          "label": "共食い解消②：store-top-design-guide 純化（タイトル・本文）",
+          "label": "STEP 5〜6 校閲・最終ゲートキーパー判断（公開OK）",
           "done": true
         },
         {
-          "label": "sales-growth-guide のGSC再インデックス要求",
+          "label": "STEP 6.5 写真選定・Notionアップロード",
           "done": true
         },
         {
-          "label": "超PayPay祭ガイドの内部リンク集約（被リンク2本＋クロスリンク1本）",
-          "done": true
-        },
-        {
-          "label": "記録更新（施策履歴・作業ログ・メモリ）",
+          "label": "STEP 7 Notion登録完了・文字化けゼロ確認",
           "done": true
         }
       ]
