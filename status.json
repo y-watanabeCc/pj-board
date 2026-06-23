@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-23T03:40:57Z",
+  "updated_at": "2026-06-23T05:51:13Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 16,
+    "tasks_done_today": 15,
     "alerts": 0
   },
   "projects": [
@@ -160,8 +160,8 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/kaikei",
       "status": "active",
       "progress": 67,
-      "latest_log": "立替経費¥600（5/29登記事項証明書）を5月分給与（6月支給）で手動加算・精算完了。課税/社保とも対象外で正しく処理（検算済み）。残り1件は7月給与集計時に¥60,000を加算。",
-      "updated_at": "2026-06-22T12:00:00Z",
+      "latest_log": "立替経費¥600の精算完了（検算済）。次の7月給与集計（7/20）は2点セット＝①立替¥60,000加算 ②渡邊さん通勤手当を13,280→10,480に変更（移転で四ツ谷ルートに）。詳細は work/kaikei/給与集計_やることメモ.md。",
+      "updated_at": "2026-06-23T12:30:00Z",
       "todos": 1,
       "tasks": [
         {
@@ -173,7 +173,7 @@
           "done": true
         },
         {
-          "label": "7月給与集計（7/20）：立替経費 +¥60,000 手動加算（6/2 収入印紙）",
+          "label": "7月給与集計（7/20）：①立替経費+¥60,000加算 ②渡邊さん通勤手当 13,280→10,480に変更（→詳細メモあり）",
           "done": false
         }
       ]
