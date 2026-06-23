@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-22T07:23:49Z",
+  "updated_at": "2026-06-23T03:40:57Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -52,10 +52,18 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
       "status": "active",
       "progress": 15,
-      "latest_log": "出向スタッフ健診PJ進行中。オーガランドとの合意完了（6/2）。次はスタッフへ案内文送付（〜7月中）。",
-      "updated_at": "2026-06-04T13:30:00Z",
-      "todos": 5,
+      "latest_log": "R8年度の労働保険年度更新（労災・出向3名分）と算定基礎届（社保・渡邊さん1名）を税理士Backlogで受領。6/26定例MTGで役割分担・段取りを確定予定。両手続きとも期限7/10。健診PJは並行進行中（スタッフへ案内文送付〜7月中）。",
+      "updated_at": "2026-06-23T12:00:00Z",
+      "todos": 7,
       "tasks": [
+        {
+          "label": "【年度更新】6/26 MTGで番号再付番・賃金集計・役割分担を確認（〜7/10申告）",
+          "done": false
+        },
+        {
+          "label": "【算定基礎届】6/26 MTGで対象1名・等級・通勤手当論点を確認（〜7/10提出）",
+          "done": false
+        },
         {
           "label": "オーガランド（荒瀬さん）との方針合意完了（6/2）",
           "done": true
