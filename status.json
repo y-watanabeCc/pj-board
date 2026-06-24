@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-23T05:51:13Z",
+  "updated_at": "2026-06-24T16:12:38Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 15,
+    "tasks_done_today": 16,
     "alerts": 0
   },
   "projects": [
@@ -247,10 +247,10 @@
       "name": "magnet 成長施策PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/company-agent/projects/magnet-growth",
       "status": "active",
-      "progress": 20,
-      "latest_log": "主力製品magnetの成長に向けた協業案件。市場・契約データの集計と現状分析が完了し、施策方針と初回打ち合わせのストーリーを策定。打ち合わせ準備中。",
-      "updated_at": "2026-06-11T00:30:00Z",
-      "todos": 3,
+      "progress": 35,
+      "latest_log": "楽天→ヤフー移行シミュレーター（診断型プロダクト）のコンセプト設計完了。HubSpot Graderモデルを採用し、楽天特有の入力→スコア表示（無料）→プラン解放（トライアル）の構造を確定。LPドラフトv2作成済み。次はオーガランドへの実証データ収集とスコアリングロジック構築。",
+      "updated_at": "2026-06-25T06:00:00Z",
+      "todos": 4,
       "tasks": [
         {
           "label": "先方からの相談・経緯の整理",
@@ -265,15 +265,31 @@
           "done": true
         },
         {
-          "label": "初回打ち合わせ（日程調整中）",
+          "label": "ヤフーへ第1便・第2便送付",
+          "done": true
+        },
+        {
+          "label": "協業プロダクト（移行シミュレーター）の基本設計",
+          "done": true
+        },
+        {
+          "label": "LPドラフト作成",
+          "done": true
+        },
+        {
+          "label": "オーガランドへの質問票設計・実証データ収集",
           "done": false
         },
         {
-          "label": "提案ラフの作成",
+          "label": "診断ツール入力設問の確定（5〜7問）",
           "done": false
         },
         {
-          "label": "協業条件の折衝（渡邊担当）",
+          "label": "スコアリングロジック構築・●データ埋め込み",
+          "done": false
+        },
+        {
+          "label": "ヤフーへ第3便（診断ツール・LP具体案として提示）",
           "done": false
         }
       ]
