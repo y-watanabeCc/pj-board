@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-24T16:12:38Z",
+  "updated_at": "2026-06-25T09:31:14Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 16,
+    "tasks_done_today": 17,
     "alerts": 0
   },
   "projects": [
@@ -247,9 +247,9 @@
       "name": "magnet 成長施策PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/company-agent/projects/magnet-growth",
       "status": "active",
-      "progress": 35,
-      "latest_log": "楽天→ヤフー移行シミュレーター（診断型プロダクト）のコンセプト設計完了。HubSpot Graderモデルを採用し、楽天特有の入力→スコア表示（無料）→プラン解放（トライアル）の構造を確定。LPドラフトv2作成済み。次はオーガランドへの実証データ収集とスコアリングロジック構築。",
-      "updated_at": "2026-06-25T06:00:00Z",
+      "progress": 45,
+      "latest_log": "協業キャンペーン内容確定（無料期間延長3ヶ月・楽天→YSコンバート代行）。先方は内部承認フェーズへ。6末キャンペーンはこの2点で対応、移行シミュレーター（本質施策）は9月を目標に別途提供予定。",
+      "updated_at": "2026-06-25T08:00:00Z",
       "todos": 4,
       "tasks": [
         {
