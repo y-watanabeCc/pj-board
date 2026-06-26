@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-25T09:31:14Z",
+  "updated_at": "2026-06-26T07:21:56Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 17,
+    "tasks_done_today": 19,
     "alerts": 0
   },
   "projects": [
@@ -51,17 +51,25 @@
       "name": "労務PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
       "status": "active",
-      "progress": 15,
-      "latest_log": "R8年度の労働保険年度更新（労災・出向3名分）と算定基礎届（社保・渡邊さん1名）を税理士Backlogで受領。6/26定例MTGで役割分担・段取りを確定予定。両手続きとも期限7/10。健診PJは並行進行中（スタッフへ案内文送付〜7月中）。",
-      "updated_at": "2026-06-23T12:00:00Z",
-      "todos": 7,
+      "progress": 35,
+      "latest_log": "6/26 税理士MTG完了。労災年度更新は電子申請済・到達待ち（数日）→ Pay-easy情報が届き次第 納付（期限7/10）。算定基礎届（定時決定）は準備済み、7/1以降に実施（期限7/10）。",
+      "updated_at": "2026-06-26T05:00:00Z",
+      "todos": 8,
       "tasks": [
         {
-          "label": "【年度更新】6/26 MTGで番号再付番・賃金集計・役割分担を確認（〜7/10申告）",
+          "label": "【年度更新】6/26 MTGで役割分担・段取りを確認",
+          "done": true
+        },
+        {
+          "label": "【年度更新】電子申請済・Pay-easy情報が届き次第 納付（期限7/10）",
           "done": false
         },
         {
-          "label": "【算定基礎届】6/26 MTGで対象1名・等級・通勤手当論点を確認（〜7/10提出）",
+          "label": "【算定基礎届】6/26 MTGで対象1名・等級・通勤手当論点を確認",
+          "done": true
+        },
+        {
+          "label": "【算定基礎届】7/1以降：定時決定を実施（期限7/10）",
           "done": false
         },
         {
