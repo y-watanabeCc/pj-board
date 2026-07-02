@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-06-26T07:21:56Z",
+  "updated_at": "2026-07-02T07:34:04Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 19,
+    "tasks_done_today": 15,
     "alerts": 0
   },
   "projects": [
@@ -51,18 +51,18 @@
       "name": "労務PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
       "status": "active",
-      "progress": 35,
-      "latest_log": "6/26 税理士MTG完了。労災年度更新は電子申請済・到達待ち（数日）→ Pay-easy情報が届き次第 納付（期限7/10）。算定基礎届（定時決定）は準備済み、7/1以降に実施（期限7/10）。",
-      "updated_at": "2026-06-26T05:00:00Z",
-      "todos": 8,
+      "progress": 50,
+      "latest_log": "7/2 労災保険料46,309円をPay-easyで納付完了。年度更新は全て完了。残るは算定基礎届（定時決定）のみ：税理士からBacklog連絡待ち（期限7/10）。",
+      "updated_at": "2026-07-02T03:00:00Z",
+      "todos": 7,
       "tasks": [
         {
           "label": "【年度更新】6/26 MTGで役割分担・段取りを確認",
           "done": true
         },
         {
-          "label": "【年度更新】電子申請済・Pay-easy情報が届き次第 納付（期限7/10）",
-          "done": false
+          "label": "【年度更新】Pay-easyで46,309円 納付完了（7/2）",
+          "done": true
         },
         {
           "label": "【算定基礎届】6/26 MTGで対象1名・等級・通勤手当論点を確認",
@@ -255,9 +255,9 @@
       "name": "magnet 成長施策PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/company-agent/projects/magnet-growth",
       "status": "active",
-      "progress": 45,
-      "latest_log": "協業キャンペーン内容確定（無料期間延長3ヶ月・楽天→YSコンバート代行）。先方は内部承認フェーズへ。6末キャンペーンはこの2点で対応、移行シミュレーター（本質施策）は9月を目標に別途提供予定。",
-      "updated_at": "2026-06-25T08:00:00Z",
+      "progress": 58,
+      "latest_log": "LP2本をエンジニアチームへ共有済み。公開URLが確定次第、先方へ回答（応募条件・コード適用範囲）とあわせて送付予定。",
+      "updated_at": "2026-07-02T12:30:00Z",
       "todos": 4,
       "tasks": [
         {
@@ -281,8 +281,20 @@
           "done": true
         },
         {
-          "label": "LPドラフト作成",
+          "label": "LP完成（制作代行キャンペーン）",
           "done": true
+        },
+        {
+          "label": "LP完成（無料トライアル延長キャンペーン）",
+          "done": true
+        },
+        {
+          "label": "LPをエンジニアチームへ共有",
+          "done": true
+        },
+        {
+          "label": "【最優先】LP公開URL確定後、先方へ回答文面とあわせて送付",
+          "done": false
         },
         {
           "label": "オーガランドへの質問票設計・実証データ収集",
