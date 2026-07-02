@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-02T07:34:04Z",
+  "updated_at": "2026-07-02T07:49:47Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 15,
+    "tasks_done_today": 16,
     "alerts": 0
   },
   "projects": [
@@ -51,9 +51,9 @@
       "name": "労務PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
       "status": "active",
-      "progress": 50,
-      "latest_log": "7/2 労災保険料46,309円をPay-easyで納付完了。年度更新は全て完了。残るは算定基礎届（定時決定）のみ：税理士からBacklog連絡待ち（期限7/10）。",
-      "updated_at": "2026-07-02T03:00:00Z",
+      "progress": 60,
+      "latest_log": "7/2 労災保険料46,309円をPay-easyで納付完了・算定基礎届も電子申請完了（到達番号:202607021646175504）。年金事務所の処理完了後、公文書確認→MFで完了チェックをする。",
+      "updated_at": "2026-07-02T05:00:00Z",
       "todos": 7,
       "tasks": [
         {
@@ -69,7 +69,7 @@
           "done": true
         },
         {
-          "label": "【算定基礎届】7/1以降：定時決定を実施（期限7/10）",
+          "label": "【算定基礎届】電子申請・到達完了（7/2）。年金事務所処理後に公文書確認→完了チェック",
           "done": false
         },
         {
