@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-02T07:49:47Z",
+  "updated_at": "2026-07-08T05:45:38Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 16,
+    "tasks_done_today": 17,
     "alerts": 0
   },
   "projects": [
@@ -20,20 +20,20 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
       "status": "done",
       "progress": 100,
-      "latest_log": "新規記事『ヤフショのPayPay還元、集客で終わっていませんか？売上に変える売り場づくりの鉄則』を公開（STEP 0〜7完了）。PayPayを正面で扱う初の記事で、既存記事との共食いを避けつつPayPay検索層を取り込む。集客を売上に変える3つの売り場対策を解説。",
-      "updated_at": "2026-06-17T11:40:00Z",
+      "latest_log": "新規記事『ヤフショで季節ギフト需要を取りこぼさない売り場戦略｜通年で安心して贈れる店に選ばれる作り方』を公開（STEP 0〜7完了）。お中元・お盆・お歳暮まで通年のギフト需要を、ギフト客心理に寄り添った商品ページと特集売り場で取り込む方法を解説。既存の特集ページ作り方記事と食い合わせず、需要・戦略側に角度を寄せた1本。",
+      "updated_at": "2026-07-08T14:00:00Z",
       "todos": 0,
       "tasks": [
         {
-          "label": "STEP 0 戦略立案：共食い回避基準でテーマ選定（C-3 PayPay経済圏）",
+          "label": "STEP 0 戦略立案：季節ギフト需要テーマ選定（共食い回避・角度確定）",
           "done": true
         },
         {
-          "label": "STEP 2〜4 サーチ・執筆依頼（ファクト数値は非断定で設計）",
+          "label": "STEP 2〜4 サーチ・執筆依頼（外部URL禁止・煽り排除で設計）",
           "done": true
         },
         {
-          "label": "STEP 5〜6 校閲・最終ゲートキーパー判断（公開OK）",
+          "label": "STEP 5〜6 校閲・最終ゲートキーパー判断（差し戻し1回→公開OK）",
           "done": true
         },
         {
@@ -255,10 +255,10 @@
       "name": "magnet 成長施策PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/company-agent/projects/magnet-growth",
       "status": "active",
-      "progress": 58,
-      "latest_log": "LP2本をエンジニアチームへ共有済み。公開URLが確定次第、先方へ回答（応募条件・コード適用範囲）とあわせて送付予定。",
-      "updated_at": "2026-07-02T12:30:00Z",
-      "todos": 4,
+      "progress": 65,
+      "latest_log": "キャンペーン用LP2本が本番URLで稼働開始。先方への回答（応募条件・コード適用範囲・LP URL）も送付完了し、キャンペーン実行フェーズへ移行。",
+      "updated_at": "2026-07-02T18:30:00Z",
+      "todos": 3,
       "tasks": [
         {
           "label": "先方からの相談・経緯の整理",
@@ -293,7 +293,11 @@
           "done": true
         },
         {
-          "label": "【最優先】LP公開URL確定後、先方へ回答文面とあわせて送付",
+          "label": "LP本番公開・先方へ回答送付",
+          "done": true
+        },
+        {
+          "label": "受付運用フローの具体化（既契約除外・コード判別・契約タイミング判定）",
           "done": false
         },
         {
