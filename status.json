@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-08T05:45:38Z",
+  "updated_at": "2026-07-16T08:49:27Z",
   "summary": {
     "total": 8,
     "active": 6,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 17,
+    "tasks_done_today": 19,
     "alerts": 0
   },
   "projects": [
@@ -107,10 +107,10 @@
       "name": "本店移転PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/honten_iten",
       "status": "active",
-      "progress": 85,
-      "latest_log": "6/16：労働保険(労災)の所在地変更届を中央労基署で提出・受理完了（労働保険番号が再付番）。雇用保険変更届は不要（労災のみ成立）。残るは税務異動届（税理士対応待ち）・社保到達確認・フェーズ4（MF/銀行/取引先/名刺など）。",
-      "updated_at": "2026-06-16T08:00:00Z",
-      "todos": 3,
+      "progress": 88,
+      "latest_log": "7/16：社会保険の所在地変更が年金機構側で反映されているのを確認（月次の社会保険料額情報が新住所・千代田管轄で届いた）＝到達確認完了。フェーズ3の役所手続きは全て完了。残るは印鑑カード交付（任意）とフェーズ4（MF/銀行/取引先/名刺など）。",
+      "updated_at": "2026-07-16T09:00:00Z",
+      "todos": 2,
       "tasks": [
         {
           "label": "書類5点作成（株主総会議事録・取締役決定書・登記申請書など）",
@@ -149,8 +149,8 @@
           "done": true
         },
         {
-          "label": "社保 到達確認（年金機構通知 or 東京広域事務センターへ電話）",
-          "done": false
+          "label": "社保 到達確認（年金機構の社会保険料額情報で新住所反映を確認・7/16）",
+          "done": true
         },
         {
           "label": "印鑑カード交付申請（東京法務局 本局・九段下）",
@@ -167,10 +167,10 @@
       "name": "会計・経費精算",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/kaikei",
       "status": "active",
-      "progress": 67,
-      "latest_log": "立替経費¥600の精算完了（検算済）。次の7月給与集計（7/20）は2点セット＝①立替¥60,000加算 ②渡邊さん通勤手当を13,280→10,480に変更（移転で四ツ谷ルートに）。詳細は work/kaikei/給与集計_やることメモ.md。",
-      "updated_at": "2026-06-23T12:30:00Z",
-      "todos": 1,
+      "progress": 72,
+      "latest_log": "7/16：Pay.jp/Stripeの月次売上仕訳を検算し、毎月の仕訳フローを手順書化（明細を置く→仕訳候補→本人入力→検算）。消費税の中間納付（第3回）の段取りも確認（期限7/31）。次の7月給与集計（7/20）は立替加算＋通勤手当変更の2点。",
+      "updated_at": "2026-07-16T09:00:00Z",
+      "todos": 2,
       "tasks": [
         {
           "label": "UPSIDER郵便代の仕訳（No.2274 通信費/郵便・切手）",
@@ -179,6 +179,14 @@
         {
           "label": "6月給与集計（6/20）：立替経費 +¥600 手動加算（5/29 登記事項証明書）",
           "done": true
+        },
+        {
+          "label": "Pay.jp/Stripe 月次売上仕訳フローを手順書化（6月分は検算済）",
+          "done": true
+        },
+        {
+          "label": "消費税 中間納付（第3回）：期限7/31。納付書orペイジー情報で納付",
+          "done": false
         },
         {
           "label": "7月給与集計（7/20）：①立替経費+¥60,000加算 ②渡邊さん通勤手当 13,280→10,480に変更（→詳細メモあり）",
