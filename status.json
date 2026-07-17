@@ -1,17 +1,17 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-17T01:47:39Z",
+  "updated_at": "2026-07-17T04:38:30Z",
   "summary": {
     "total": 9,
-    "active": 6,
-    "waiting": 1,
+    "active": 7,
+    "waiting": 0,
     "done": 2,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
     "tasks_done_today": 20,
-    "alerts": 1
+    "alerts": 0
   },
   "projects": [
     {
@@ -386,11 +386,11 @@
       "id": "smbc-kouza",
       "name": "SMBC法人口座開設",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/smbc_kouza",
-      "status": "waiting",
-      "progress": 65,
-      "latest_log": "7/17 オンライン本人確認面談(ROOMS)を実施完了。審査結果は後日メールで通知される予定＝審査待ち。通過すれば口座開設・初期設定へ。",
-      "updated_at": "2026-07-17T02:00:00Z",
-      "todos": 2,
+      "status": "active",
+      "progress": 90,
+      "latest_log": "7/17 審査通過・口座開設完了。キャッシュカードとワンタイムパスワード有効化ハガキが約1週間で法人住所(WeWork)に届く予定。届いたら有効化＋MF会計に口座登録して完了。口座情報はローカルの口座情報.md（非公開）に保管。",
+      "updated_at": "2026-07-17T04:00:00Z",
+      "todos": 3,
       "tasks": [
         {
           "label": "Web申込・入力（設立日/決算月/従業員数/業種/預金種類など）完了",
@@ -401,30 +401,27 @@
           "done": true
         },
         {
-          "label": "Web面談を予約（7/17 10:30 ROOMS）",
-          "done": true
-        },
-        {
           "label": "Web面談・本人確認 実施完了（7/17）",
           "done": true
         },
         {
-          "label": "審査結果メール待ち（後日）",
+          "label": "審査通過・口座開設完了（7/17）",
+          "done": true
+        },
+        {
+          "label": "キャッシュカード＋OTP有効化ハガキ受取（約1週間・WeWork宛）→ アプリ有効化",
           "done": false
         },
         {
-          "label": "口座開設完了・初期設定（ネットバンキング等）",
+          "label": "MFクラウド会計に新口座を登録",
+          "done": false
+        },
+        {
+          "label": "（必要時）印鑑届の郵送・取引先への口座案内",
           "done": false
         }
       ]
     }
   ],
-  "alerts": [
-    {
-      "type": "waiting",
-      "project_id": "smbc-kouza",
-      "message": "審査結果メール待ち（後日）。通過後に口座開設・初期設定",
-      "time": "2026-07-17T02:00:00Z"
-    }
-  ]
+  "alerts": []
 }
