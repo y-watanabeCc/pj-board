@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-17T04:38:30Z",
+  "updated_at": "2026-07-17T10:30:06Z",
   "summary": {
     "total": 9,
     "active": 7,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 20,
+    "tasks_done_today": 19,
     "alerts": 0
   },
   "projects": [
@@ -20,28 +20,28 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
       "status": "done",
       "progress": 100,
-      "latest_log": "新規記事『ヤフショで季節ギフト需要を取りこぼさない売り場戦略｜通年で安心して贈れる店に選ばれる作り方』を公開（STEP 0〜7完了）。お中元・お盆・お歳暮まで通年のギフト需要を、ギフト客心理に寄り添った商品ページと特集売り場で取り込む方法を解説。既存の特集ページ作り方記事と食い合わせず、需要・戦略側に角度を寄せた1本。",
-      "updated_at": "2026-07-08T14:00:00Z",
+      "latest_log": "週次分析レポートを起点に、新規記事は書かず既存記事の最適化に集中する回。終了したセールイベントを案内し続けていた記事の表現を修正（ファクトリスク解消）、成果を出している記事から主要記事への内部リンクを追加して評価を集約、感謝デー関連2記事から本命記事へのキーワードリンクを補強、未インデックス記事の再登録リクエストを実施。効果は次回の分析で検証する。",
+      "updated_at": "2026-07-17T19:30:00Z",
       "todos": 0,
       "tasks": [
         {
-          "label": "STEP 0 戦略立案：季節ギフト需要テーマ選定（共食い回避・角度確定）",
+          "label": "STEP 0 戦略判断：新規記事より既存資産の最適化を優先（分析レポート起点）",
           "done": true
         },
         {
-          "label": "STEP 2〜4 サーチ・執筆依頼（外部URL禁止・煽り排除で設計）",
+          "label": "① 終了イベントの案内表現を修正（ファクトリスク解消）",
           "done": true
         },
         {
-          "label": "STEP 5〜6 校閲・最終ゲートキーパー判断（差し戻し1回→公開OK）",
+          "label": "② 成果記事→主要記事への内部リンクで評価を集約",
           "done": true
         },
         {
-          "label": "STEP 6.5 写真選定・Notionアップロード",
+          "label": "③ 感謝デー2記事から本命記事へキーワードリンクを補強",
           "done": true
         },
         {
-          "label": "STEP 7 Notion登録完了・文字化けゼロ確認",
+          "label": "④ 未インデックス記事のGSC再登録リクエスト",
           "done": true
         }
       ]
