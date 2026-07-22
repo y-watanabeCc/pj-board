@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-17T10:30:06Z",
+  "updated_at": "2026-07-22T11:16:13Z",
   "summary": {
     "total": 9,
     "active": 7,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 19,
+    "tasks_done_today": 18,
     "alerts": 0
   },
   "projects": [
@@ -388,9 +388,9 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/smbc_kouza",
       "status": "active",
       "progress": 90,
-      "latest_log": "7/17 審査通過・口座開設完了。キャッシュカードとワンタイムパスワード有効化ハガキが約1週間で法人住所(WeWork)に届く予定。届いたら有効化＋MF会計に口座登録して完了。口座情報はローカルの口座情報.md（非公開）に保管。",
-      "updated_at": "2026-07-17T04:00:00Z",
-      "todos": 3,
+      "latest_log": "7/27 WeWorkでSMBC処理を優先実施予定：カード＋OTPハガキ受取→アプリ有効化／印鑑届 投函（銀行印=法人実印とは別の専用印）／MF会計に新口座登録。書類はwork/smbc_kouza/に整備・チェックリスト作成済。社保の口座振替は書類準備済で申請は後日（Trunkはネット系ルート＝2部とも千代田年金事務所へ直送・銀行持込不要／印鑑届の登録後に提出）。",
+      "updated_at": "2026-07-22T11:00:00Z",
+      "todos": 4,
       "tasks": [
         {
           "label": "Web申込・入力（設立日/決算月/従業員数/業種/預金種類など）完了",
@@ -409,15 +409,19 @@
           "done": true
         },
         {
-          "label": "キャッシュカード＋OTP有効化ハガキ受取（約1週間・WeWork宛）→ アプリ有効化",
+          "label": "キャッシュカード＋OTP有効化ハガキ受取→アプリ有効化（7/27予定）",
           "done": false
         },
         {
-          "label": "MFクラウド会計に新口座を登録",
+          "label": "印鑑届の提出（銀行印=専用印・7/27投函予定・書類準備済）",
           "done": false
         },
         {
-          "label": "（必要時）印鑑届の郵送・取引先への口座案内",
+          "label": "MFクラウド会計に新口座を登録（7/27予定）",
+          "done": false
+        },
+        {
+          "label": "社保の口座振替申請（書類準備済・印鑑届登録後に千代田年金事務所へ2部直送）",
           "done": false
         }
       ]
