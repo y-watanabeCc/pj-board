@@ -1,6 +1,6 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-22T11:16:13Z",
+  "updated_at": "2026-07-24T07:29:20Z",
   "summary": {
     "total": 9,
     "active": 7,
@@ -10,7 +10,7 @@
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 18,
+    "tasks_done_today": 19,
     "alerts": 0
   },
   "projects": [
@@ -20,12 +20,12 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
       "status": "done",
       "progress": 100,
-      "latest_log": "週次分析レポートを起点に、新規記事は書かず既存記事の最適化に集中する回。終了したセールイベントを案内し続けていた記事の表現を修正（ファクトリスク解消）、成果を出している記事から主要記事への内部リンクを追加して評価を集約、感謝デー関連2記事から本命記事へのキーワードリンクを補強、未インデックス記事の再登録リクエストを実施。効果は次回の分析で検証する。",
-      "updated_at": "2026-07-17T19:30:00Z",
+      "latest_log": "既存記事の最適化に加え、新規記事「送料無料ラインの決め方と売り場での見せ方」を公開した回。自店の客単価・粗利・送料実費から逆算する手順と、あと少しで無料になることを買い物客に伝える売り場づくりをまとめた。既存記事と扱うテーマが重ならない領域を選んでいる。公開後は本文を全数照合し、表記崩れやリンク誤りがないことを確認済み。効果は次回の分析で検証する。",
+      "updated_at": "2026-07-24T07:10:00Z",
       "todos": 0,
       "tasks": [
         {
-          "label": "STEP 0 戦略判断：新規記事より既存資産の最適化を優先（分析レポート起点）",
+          "label": "STEP 0 戦略判断：既存資産の最適化を優先（分析レポート起点）",
           "done": true
         },
         {
@@ -42,6 +42,10 @@
         },
         {
           "label": "④ 未インデックス記事のGSC再登録リクエスト",
+          "done": true
+        },
+        {
+          "label": "⑤ 新規記事「送料無料ラインの決め方」を公開（本文照合まで完了）",
           "done": true
         }
       ]
