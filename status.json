@@ -1,17 +1,17 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-24T07:29:20Z",
+  "updated_at": "2026-07-29T04:10:22Z",
   "summary": {
     "total": 9,
-    "active": 7,
-    "waiting": 0,
+    "active": 6,
+    "waiting": 1,
     "done": 2,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 19,
-    "alerts": 0
+    "tasks_done_today": 22,
+    "alerts": 1
   },
   "projects": [
     {
@@ -390,11 +390,11 @@
       "id": "smbc-kouza",
       "name": "SMBC法人口座開設",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/smbc_kouza",
-      "status": "active",
-      "progress": 90,
-      "latest_log": "7/27 WeWorkでSMBC処理を優先実施予定：カード＋OTPハガキ受取→アプリ有効化／印鑑届 投函（銀行印=法人実印とは別の専用印）／MF会計に新口座登録。書類はwork/smbc_kouza/に整備・チェックリスト作成済。社保の口座振替は書類準備済で申請は後日（Trunkはネット系ルート＝2部とも千代田年金事務所へ直送・銀行持込不要／印鑑届の登録後に提出）。",
-      "updated_at": "2026-07-22T11:00:00Z",
-      "todos": 4,
+      "status": "waiting",
+      "progress": 95,
+      "latest_log": "7/27 WeWorkでカード受取→OTP有効化／印鑑届 投函／MFクラウド会計にSMBC口座を連携（Web21の外部連携サービス権限設定を経て完了）。残るは社保の口座振替申請のみ。印鑑登録は『無連絡＝完了』方式（1〜10日／不備時のみ連絡）。8/8にSMBCから修正連絡がなければ印鑑登録完了とみなし、捺印済みの社保口座振替申出書を東京広域事務センターへ投函する（カレンダーにリマインド登録済み）。",
+      "updated_at": "2026-07-29T09:00:00Z",
+      "todos": 1,
       "tasks": [
         {
           "label": "Web申込・入力（設立日/決算月/従業員数/業種/預金種類など）完了",
@@ -413,23 +413,30 @@
           "done": true
         },
         {
-          "label": "キャッシュカード＋OTP有効化ハガキ受取→アプリ有効化（7/27予定）",
-          "done": false
+          "label": "キャッシュカード＋OTP有効化ハガキ受取→アプリ有効化（7/27完了）",
+          "done": true
         },
         {
-          "label": "印鑑届の提出（銀行印=専用印・7/27投函予定・書類準備済）",
-          "done": false
+          "label": "印鑑届の提出（銀行印=専用印・7/27投函）",
+          "done": true
         },
         {
-          "label": "MFクラウド会計に新口座を登録（7/27予定）",
-          "done": false
+          "label": "MFクラウド会計に新口座を登録・連携（7/27完了）",
+          "done": true
         },
         {
-          "label": "社保の口座振替申請（書類準備済・印鑑届登録後に千代田年金事務所へ2部直送）",
+          "label": "社保の口座振替申請（捺印済・印鑑登録完了後=8/8目安に東京広域事務センターへ投函）",
           "done": false
         }
       ]
     }
   ],
-  "alerts": []
+  "alerts": [
+    {
+      "type": "waiting",
+      "project_id": "smbc-kouza",
+      "message": "印鑑登録の完了待ち（無連絡＝完了・1〜10日）。8/8に修正連絡なければ社保口座振替を東京広域事務センターへ投函",
+      "time": "2026-07-29T09:00:00Z"
+    }
+  ]
 }
