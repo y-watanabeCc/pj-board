@@ -1,16 +1,16 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-07-29T04:10:22Z",
+  "updated_at": "2026-08-07T07:53:51Z",
   "summary": {
     "total": 9,
     "active": 6,
     "waiting": 1,
-    "done": 2,
+    "done": 1,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 22,
+    "tasks_done_today": 19,
     "alerts": 1
   },
   "projects": [
@@ -18,35 +18,31 @@
       "id": "yahoo-media",
       "name": "Yahoo Media PJ",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/olecs-ai-context/CONTEXT_BOX/05_Incubation/yahoo media PJ",
-      "status": "done",
-      "progress": 100,
-      "latest_log": "既存記事の最適化に加え、新規記事「送料無料ラインの決め方と売り場での見せ方」を公開した回。自店の客単価・粗利・送料実費から逆算する手順と、あと少しで無料になることを買い物客に伝える売り場づくりをまとめた。既存記事と扱うテーマが重ならない領域を選んでいる。公開後は本文を全数照合し、表記崩れやリンク誤りがないことを確認済み。効果は次回の分析で検証する。",
-      "updated_at": "2026-07-24T07:10:00Z",
+      "status": "in_progress",
+      "progress": 70,
+      "latest_log": "検索エンジンに未登録のまま数か月埋もれていた既存記事5本を特定し、再登録をリクエスト。あわせて関連する既存記事から内部リンクを新設して、見つけてもらいやすくした。登録状況は目視で裏取りし、内部リンクの飛び先・表記も全数確認済み。反映には数日〜2週間かかる見込みで、次回の分析で効果を検証する。",
+      "updated_at": "2026-08-04T07:00:00Z",
       "todos": 0,
       "tasks": [
         {
-          "label": "STEP 0 戦略判断：既存資産の最適化を優先（分析レポート起点）",
+          "label": "未登録の既存記事5本を特定・裏取り",
           "done": true
         },
         {
-          "label": "① 終了イベントの案内表現を修正（ファクトリスク解消）",
+          "label": "5本の再登録（インデックス）をリクエスト",
           "done": true
         },
         {
-          "label": "② 成果記事→主要記事への内部リンクで評価を集約",
+          "label": "関連記事からの内部リンクを新設（4本）・検証",
           "done": true
         },
         {
-          "label": "③ 感謝デー2記事から本命記事へキーワードリンクを補強",
-          "done": true
+          "label": "再クロール・登録の反映確認（次回分析）",
+          "done": false
         },
         {
-          "label": "④ 未インデックス記事のGSC再登録リクエスト",
-          "done": true
-        },
-        {
-          "label": "⑤ 新規記事「送料無料ラインの決め方」を公開（本文照合まで完了）",
-          "done": true
+          "label": "主要記事の見せ方・内部リンク方針の追加判断",
+          "done": false
         }
       ]
     },
@@ -56,9 +52,9 @@
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice",
       "status": "active",
       "progress": 60,
-      "latest_log": "7/2 労災保険料46,309円をPay-easyで納付完了・算定基礎届も電子申請完了（到達番号:202607021646175504）。年金事務所の処理完了後、公文書確認→MFで完了チェックをする。",
-      "updated_at": "2026-07-02T05:00:00Z",
-      "todos": 7,
+      "latest_log": "8/7 健診案内はオーガランドからスタッフへ直接連絡済みと判明、Olecs側の案内文送付タスクは対応不要に。算定基礎届は年金事務所の処理完了後、公文書確認→MFで完了チェック待ち。",
+      "updated_at": "2026-08-07T06:00:00Z",
+      "todos": 6,
       "tasks": [
         {
           "label": "【年度更新】6/26 MTGで役割分担・段取りを確認",
@@ -81,8 +77,8 @@
           "done": true
         },
         {
-          "label": "スタッフ3名へ案内文を送付（〜7月中）",
-          "done": false
+          "label": "スタッフ3名への案内はオーガランドから直接連絡済み（Olecs側対応不要・8/7確認）",
+          "done": true
         },
         {
           "label": "各自クリニックリサーチ・報告（8/31まで）",
