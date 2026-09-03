@@ -1,17 +1,17 @@
 {
   "title": "Project Dashboard",
-  "updated_at": "2026-08-07T07:53:51Z",
+  "updated_at": "2026-09-03T02:37:29Z",
   "summary": {
     "total": 9,
     "active": 6,
-    "waiting": 1,
-    "done": 1,
+    "waiting": 0,
+    "done": 2,
     "error": 0,
     "commits_today": 0,
     "commits_add": 0,
     "commits_del": 0,
-    "tasks_done_today": 19,
-    "alerts": 1
+    "tasks_done_today": 16,
+    "alerts": 0
   },
   "projects": [
     {
@@ -386,11 +386,11 @@
       "id": "smbc-kouza",
       "name": "SMBC法人口座開設",
       "dir": "/Users/yastaka_watanabe_auji_industries/Desktop/Bern/backoffice/work/smbc_kouza",
-      "status": "waiting",
-      "progress": 95,
-      "latest_log": "7/27 WeWorkでカード受取→OTP有効化／印鑑届 投函／MFクラウド会計にSMBC口座を連携（Web21の外部連携サービス権限設定を経て完了）。残るは社保の口座振替申請のみ。印鑑登録は『無連絡＝完了』方式（1〜10日／不備時のみ連絡）。8/8にSMBCから修正連絡がなければ印鑑登録完了とみなし、捺印済みの社保口座振替申出書を東京広域事務センターへ投函する（カレンダーにリマインド登録済み）。",
-      "updated_at": "2026-07-29T09:00:00Z",
-      "todos": 1,
+      "status": "done",
+      "progress": 100,
+      "latest_log": "SMBC法人口座開設に関する一連の手続きが全て完了。口座開設・キャッシュカード/OTP有効化・印鑑届・MFクラウド会計への口座連携に加え、社保の口座振替申請（東京広域事務センターへ投函）も完了し、本PJをクローズ。",
+      "updated_at": "2026-09-03T00:00:00Z",
+      "todos": 0,
       "tasks": [
         {
           "label": "Web申込・入力（設立日/決算月/従業員数/業種/預金種類など）完了",
@@ -421,18 +421,11 @@
           "done": true
         },
         {
-          "label": "社保の口座振替申請（捺印済・印鑑登録完了後=8/8目安に東京広域事務センターへ投函）",
-          "done": false
+          "label": "社保の口座振替申請（東京広域事務センターへ投函・完了）",
+          "done": true
         }
       ]
     }
   ],
-  "alerts": [
-    {
-      "type": "waiting",
-      "project_id": "smbc-kouza",
-      "message": "印鑑登録の完了待ち（無連絡＝完了・1〜10日）。8/8に修正連絡なければ社保口座振替を東京広域事務センターへ投函",
-      "time": "2026-07-29T09:00:00Z"
-    }
-  ]
+  "alerts": []
 }
